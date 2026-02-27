@@ -26,3 +26,12 @@
 - Owner: kei-mb
 - Status: received
 - Notes: Archive copy for retention. Git-tracked exclusion applies.
+
+## Document Record: DOC-2026-02-27-004
+- Document ID: DOC-2026-02-27-004
+- Source Path: `Created in project: docs/client_materials/notes/2026-02-27_kei-mb_hearing-sheet-lite.md`
+- Received Date: 2026-02-27
+- Normalized File Name: `2026-02-27_kei-mb_hearing-sheet-lite.md`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Lightweight client hearing sheet for requirement finalization. Designed to minimize response burden.
