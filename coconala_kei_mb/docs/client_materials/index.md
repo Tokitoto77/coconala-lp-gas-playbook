@@ -44,3 +44,12 @@
 - Owner: kei-mb
 - Status: reviewed
 - Notes: Recorded reference LP analysis focused on first-view flow (A) and form design (F), with implementation hints.
+
+## Document Record: DOC-2026-02-27-006
+- Document ID: DOC-2026-02-27-006
+- Source Path: `Derived from client-shared requirements context`
+- Received Date: 2026-02-27
+- Normalized File Name: `2026-02-27_kei-mb_requirements-progress.md`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Requirement progress tracker separating confirmed items and remaining decisions.
