@@ -62,3 +62,12 @@
 - Owner: kei-mb
 - Status: reviewed
 - Notes: Draft LP structure (max 8 sections) for early design kickoff before requirement lock.
+
+## Document Record: DOC-2026-02-27-008
+- Document ID: DOC-2026-02-27-008
+- Source Path: `Created in project: docs/client_materials/mockups/2026-02-27_kei-mb_section1-sp-wireframe.html`
+- Received Date: 2026-02-27
+- Normalized File Name: `2026-02-27_kei-mb_section1-sp-wireframe.html`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Mobile-first wireframe mock for LP Section 1 (first view + 3-field starter form).
