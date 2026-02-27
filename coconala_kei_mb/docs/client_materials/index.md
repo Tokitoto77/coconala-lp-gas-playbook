@@ -53,3 +53,12 @@
 - Owner: kei-mb
 - Status: reviewed
 - Notes: Requirement progress tracker separating confirmed items and remaining decisions.
+
+## Document Record: DOC-2026-02-27-007
+- Document ID: DOC-2026-02-27-007
+- Source Path: `Derived from proposal constraints + reference LP analysis`
+- Received Date: 2026-02-27
+- Normalized File Name: `2026-02-27_kei-mb_lp-structure-proposal-v0.md`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Draft LP structure (max 8 sections) for early design kickoff before requirement lock.
