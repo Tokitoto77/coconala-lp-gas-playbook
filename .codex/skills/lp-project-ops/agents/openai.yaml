@@ -1,0 +1,4 @@
+interface:
+  display_name: "LP Project Ops"
+  short_description: "Standardized LP workflow with strict decision gates"
+  default_prompt: "Use $lp-project-ops to run this LP project with minimal client questions and fixed gate approvals."
