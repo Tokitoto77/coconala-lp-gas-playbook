@@ -71,3 +71,21 @@
 - Owner: kei-mb
 - Status: reviewed
 - Notes: Mobile-first wireframe mock for LP Section 1 (first view + 3-field starter form).
+
+## Document Record: DOC-2026-03-02-011
+- Document ID: DOC-2026-03-02-011
+- Source Path: `Created in project: docs/client_materials/mockups/2026-03-02_kei-mb_section1-sp-redesign-v1.html`
+- Received Date: 2026-03-02
+- Normalized File Name: `2026-03-02_kei-mb_section1-sp-redesign-v1.html`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Section 1 redesign mock (v1) applying CV-focused polish to AI-style artifacts.
+
+## Document Record: DOC-2026-03-02-012
+- Document ID: DOC-2026-03-02-012
+- Source Path: `Created in project: docs/client_materials/notes/2026-03-02_kei-mb_section1-redesign-directives-v1.md`
+- Received Date: 2026-03-02
+- Normalized File Name: `2026-03-02_kei-mb_section1-redesign-directives-v1.md`
+- Owner: kei-mb
+- Status: reviewed
+- Notes: Priority-ranked redesign directives and self-check scoring for Section 1.
