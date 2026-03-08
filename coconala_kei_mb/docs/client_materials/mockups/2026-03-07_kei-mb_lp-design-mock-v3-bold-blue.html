@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>楽ミツ | 引越し見積もり比較サービス</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #f0f0f0;
+            --surface: #ffffff;
+            --surface-2: #e0e0e0;
+            --line: #000000;
+            --ink: #000000;
+            --ink-soft: #333333;
+
+            /* ======== COLOR THEME ======== */
+            --primary: #0044FF;
+            /* エレクトリックブルー */
+            --primary-text: #FFFFFF;
+            /* ブルーの上の文字色 */
+
+            --accent: #FFE600;
+            /* ブライトイエロー */
+            --accent-text: #000000;
+            /* イエローの上の文字色 */
+            /* ============================== */
+
+            --ok: #00D166;
+            --shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+            --shadow-soft: 4px 4px 0px rgba(0, 0, 0, 1);
+            --border-thick: 4px solid var(--line);
+            --border-thin: 2px solid var(--line);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--ink);
+            font-family: "Noto Sans JP", sans-serif;
+            /* タイポグラフィ改善（カーニングと文字詰め） */
+            font-feature-settings: "palt" 1;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+        }
+
+        /* 本文の文字サイズと行間のベース設定（スマホ考慮） */
+        p {
+            font-size: 16px;
+            line-height: 1.75;
+            /* 1行の文字数が多すぎないように調整（PC向け） */
+            max-width: 45em;
+            margin-top: 0;
+        }
+
+        @media (max-width: 640px) {
+            p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ─── ページ骨格 ─── */
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ─── ヘッダー ─── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--primary);
+            border-bottom: var(--border-thick);
+            margin: 0;
+        }
+
+        .header-inner {
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .brand img {
+            width: 120px;
+            height: auto;
+            display: block;
+            /* 背景が濃いブルーなのでロゴを白抜き風に調整 */
+            filter: grayscale(100%) contrast(150%) invert(1);
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--primary-text);
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 4px;
+        }
+
+        .header-cta {
+            display: inline-flex;
+            align-items: center;
+            height: 44px;
+            padding: 0 24px;
+            background: var(--accent);
+            color: var(--accent-text);
+            font-weight: 900;
+            font-size: 14px;
+            border: var(--border-thin);
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .header-cta:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
+        }
+
+        section {
+            padding: 80px 40px;
+            border-bottom: var(--border-thick);
+            background: var(--bg);
+        }
+
+        /* ─── ヒーロー ─── */
+        .hero {
+            display: flex;
+            align-items: stretch;
+            min-height: 80vh;
+            background: var(--bg);
+            padding: 0;
+            border-bottom: var(--border-thick);
+        }
+
+        .hero-left {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            padding: 60px 40px 340px 40px;
+            /* アニメーションエリア分の下部余白 */
+            background: var(--surface);
+            border-right: var(--border-thick);
+            position: relative;
+            overflow: hidden;
+            /* トラックを区切り線でクリップ */
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 900;
+            background: var(--ink);
+            color: #fff;
+            padding: 6px 16px;
+            border: var(--border-thin);
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        .h1 {
+            margin: 0;
+            font-size: 58px;
+            line-height: 1.1;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .h1 em {
+            font-style: normal;
+            background: var(--primary);
+            color: var(--primary-text);
+            padding: 0 8px;
+            border: var(--border-thin);
+            display: inline-block;
+            margin-top: 8px;
+            transform: rotate(-2deg);
+        }
+
+        .hero-sub {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .chips {
+            display: flex;
+            gap: 12px;
+        }
+
+        .chip {
+            display: inline-flex;
+            height: 38px;
+            padding: 0 16px;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 900;
+            background: var(--primary);
+            color: var(--primary-text);
+            border: var(--border-thin);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-right {
+            flex: 0.8;
+            padding: 60px 40px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景色を少しブルーっぽく */
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 68, 255, 0.05);
+        }
+
+        .hero-illust {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ─── ヒーロー内 トラックアニメーション ─── */
+        .city-animation-area {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 340px;
+            /* 拡大後の建物+トラックが収まる高さ */
+            overflow: hidden;
+            pointer-events: none;
+            background: transparent;
+        }
+
+        .city-bg-layer {
+            position: absolute;
+            bottom: 30px;
+            /* 建物を底上げして下にトラックのスペースを作る */
+            left: 0;
+            width: 100%;
+            height: calc(100% - 30px);
+            background-image: url('../assets/illustrations/main_Illustrator.png');
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            background-size: auto 200px;
+            /* 建物を小さく（横幅・高さを適正に） */
+            /* 建物を小さめに表示 */
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .moving-truck-layer {
+            position: absolute;
+            bottom: 10px;
+            /* トラックが枠内に収まるようにプラス値に */
+            left: 0;
+            width: 80px;
+            /* 建物の縮小に合わせてトラックも少しだけ小さく */
+            height: 55px;
+            background-image: url('../assets/illustrations/Track.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: bottom center;
+            /* アニメーションの時間を調整し、画面内にとどまる時間を長くする */
+            animation: driveTruck 12s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes driveTruck {
+            0% {
+                transform: translateX(-100px);
+            }
+
+            /* 画面外からスタート */
+            100% {
+                transform: translateX(900px);
+            }
+
+            /* hero-left幅を超えたあたり。overflow:hiddenで区切り線でクリップされる */
+        }
+
+        /* ─── フォームカード ─── */
+        .form-card {
+            background: var(--surface);
+            border: var(--border-thick);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 440px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .form-badge {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--accent-text);
+            background: var(--accent);
+            padding: 4px 12px;
+            border: var(--border-thin);
+            margin-bottom: 16px;
+            transform: rotate(-3deg);
+        }
+
+        .form-title {
+            margin: 0 0 24px;
+            font-size: 28px;
+            font-weight: 900;
+            text-align: center;
+            border-bottom: var(--border-thick);
+            padding-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 14px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .control {
+            width: 100%;
+            height: 56px;
+            border: var(--border-thin);
+            background: var(--bg);
+            padding: 0 16px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink);
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        .control:focus {
+            outline: none;
+            background: #e6f0ff;
+            border-color: var(--primary);
+        }
+
+        .cta {
+            width: 100%;
+            height: 64px;
+            border: var(--border-thick);
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--accent-text);
+            cursor: pointer;
+            background: var(--accent);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.1s, box-shadow 0.1s;
+            margin-top: 16px;
+            display: grid;
+            place-items: center;
+            text-transform: uppercase;
+        }
+
+        .cta:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
+        }
+
+        .cta:active {
+            background: #000;
+            color: #fff;
+        }
+
+        .cta-note {
+            margin: 12px 0 0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ─── セクション共通 ─── */
+        .section-head {
+            margin-bottom: 48px;
+            border-bottom: var(--border-thick);
+            padding-bottom: 24px;
+        }
+
+        .section-head .label {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 900;
+            background: var(--primary);
+            color: var(--primary-text);
+            padding: 4px 12px;
+            margin-bottom: 16px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .section-head p {
+            margin: 16px 0 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ─── コンテンツ要素 ─── */
+        .cards-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: var(--border-thick);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.1s;
+        }
+
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+            border-color: var(--primary);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: var(--border-thick);
+            margin-bottom: 20px;
+            background: var(--bg);
+        }
+
+        .card h3 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .step {
+            background: var(--surface);
+            border: var(--border-thick);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step .num-badge {
+            position: absolute;
+            top: -20px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--primary-text);
+            font-size: 24px;
+            font-weight: 900;
+            display: grid;
+            place-items: center;
+            border: var(--border-thin);
+        }
+
+        .step-icon-wrap {
+            width: 100%;
+            height: 160px;
+            background: var(--bg);
+            border: var(--border-thick);
+            margin-bottom: 24px;
+            display: grid;
+            place-items: center;
+        }
+
+        .step-icon-wrap img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            /* アイコンが歪まないように追加 */
+            filter: grayscale(1);
+        }
+
+        /* 3番目のアイコン（電卓）を少し中央寄りに調整 */
+        .step:nth-child(3) .step-icon-wrap img {
+            transform: translateX(15px);
+            /* 左に寄っていたため、逆に右側へ移動させて中央に見えるよう調整 */
+        }
+
+        .step h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0 0 12px;
+            color: var(--ink);
+        }
+
+        .step p {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .price {
+            background: var(--primary);
+            border: var(--border-thick);
+            box-shadow: var(--shadow);
+            text-align: center;
+            color: var(--primary-text);
+        }
+
+        .price h3 {
+            margin: 0;
+            padding: 16px;
+            background: var(--ink);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 900;
+            border-bottom: var(--border-thick);
+        }
+
+        .price .value {
+            padding: 32px 20px 16px;
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--accent);
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .price .cond {
+            padding: 0 20px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        .reason-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .reason {
+            display: flex;
+            gap: 20px;
+            background: var(--surface);
+            border: var(--border-thick);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .reason-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border: var(--border-thick);
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            color: var(--accent-text);
+        }
+
+        .reason h3 {
+            margin: 0 0 8px;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .reason p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .proof {
+            background: var(--primary);
+            border: var(--border-thick);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            color: var(--primary-text);
+            height: fit-content;
+        }
+
+        .proof h3 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-text);
+            border-bottom: var(--border-thick);
+            border-color: var(--primary-text);
+            padding-bottom: 12px;
+        }
+
+        .stat {
+            background: var(--surface);
+            color: var(--ink);
+            border: var(--border-thick);
+            padding: 16px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            padding-bottom: 4px;
+            color: var(--primary);
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .panel {
+            background: var(--surface);
+            border: var(--border-thick);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .tag-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            background: var(--bg);
+            border: var(--border-thin);
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 900;
+            box-shadow: 2px 2px 0 #000;
+            cursor: default;
+            transition: background 0.1s;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            color: var(--accent-text);
+        }
+
+        .faq {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        details {
+            background: var(--surface);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-soft);
+        }
+
+        summary {
+            padding: 24px;
+            font-weight: 900;
+            font-size: 18px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '▼';
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        details[open] summary::after {
+            content: '▲';
+        }
+
+        details p {
+            margin: 0;
+            padding: 0 24px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.7;
+            border-top: var(--border-thick);
+            padding-top: 20px;
+            background: var(--bg);
+        }
+
+        .final {
+            background: var(--ink);
+            color: var(--primary-text);
+            text-align: center;
+            padding: 120px 40px;
+            border-bottom: none;
+        }
+
+        .final h2 {
+            font-size: 56px;
+            font-weight: 900;
+            margin: 0 0 24px;
+            text-transform: uppercase;
+            color: var(--primary-text);
+        }
+
+        .final p {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 40px;
+            max-width: 600px;
+        }
+
+        .final .cta {
+            max-width: 440px;
+            margin: 0 auto;
+            background: var(--accent);
+            color: var(--accent-text);
+        }
+
+        @media (max-width: 980px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: var(--border-thick);
+            }
+
+            .hero-right {
+                padding: 40px 20px;
+            }
+
+            .cards-3,
+            .steps,
+            .prices,
+            .reasons,
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .h1 {
+                font-size: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-inner">
+                <a class="brand" href="#s1"><img src="../assets/logo/2026-03-04_kei-mb_logo_main.png" alt="楽ミツ" /></a>
+                <nav class="nav">
+                    <a href="#s2">お悩み</a><a href="#s3">3ステップ</a><a href="#s4">料金</a><a href="#s7">FAQ</a>
+                </nav>
+                <a class="header-cta" href="#s1">無料見積もり</a>
+            </div>
+        </header>
+
+        <!-- S1: ヒーロー -->
+        <section id="s1" class="hero">
+            <div class="hero-left">
+                <span class="eyebrow">関西エリア対応 / 完全無料</span>
+                <h1 class="h1">引越し見積もりを、<br /><em>超速・カンタンに</em>。</h1>
+                <p class="hero-sub">地域密着の提携業者を最大10社まで一括比較。<br />入力は最小限、最安値がすぐわかる！</p>
+                <div class="chips"><span class="chip">完全無料</span><span class="chip">最短1分</span><span
+                        class="chip">しつこい営業なし</span></div>
+
+                <!-- ファーストビュー トラックアニメーション -->
+                <div class="city-animation-area">
+                    <div class="city-bg-layer"></div>
+                    <div class="moving-truck-layer"></div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img src="../assets/illustrations/hero_moving_family.png" alt="" class="hero-illust" />
+                <form class="form-card" action="#">
+                    <span class="form-badge">🔥 1分でわかる</span>
+                    <p class="form-title">無料見積もり</p>
+                    <div class="field"><label for="from">現在のエリア</label><select id="from" class="control">
+                            <option>選択してください</option>
+                            <option>大阪府</option>
+                            <option>兵庫県</option>
+                            <option>京都府</option>
+                            <option>奈良県</option>
+                            <option>和歌山県</option>
+                            <option>滋賀県</option>
+                        </select></div>
+                    <div class="field"><label for="to">引越し先エリア</label><select id="to" class="control">
+                            <option>選択してください</option>
+                            <option>大阪府</option>
+                            <option>兵庫県</option>
+                            <option>京都府</option>
+                            <option>奈良県</option>
+                            <option>和歌山県</option>
+                            <option>滋賀県</option>
+                            <option>その他</option>
+                        </select></div>
+                    <div class="field"><label for="people">ご利用人数</label><select id="people" class="control">
+                            <option>選択してください</option>
+                            <option>単身（1人）</option>
+                            <option>2人</option>
+                            <option>家族（3人以上）</option>
+                        </select></div>
+                    <div class="field"><label for="month">予定時期</label><select id="month" class="control">
+                            <option>選択してください</option>
+                            <option>1ヶ月以内</option>
+                            <option>2〜3ヶ月以内</option>
+                            <option>3ヶ月以上先</option>
+                            <option>未定</option>
+                        </select></div>
+                    <button type="button" class="cta">いまスグ無料見積もり</button>
+                    <p class="cta-note">※同時配信はおこないません</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- S2: お悩み -->
+        <section id="s2">
+            <div class="section-head">
+                <span class="label">PAIN POINTS</span>
+                <h2>引越し業者探し、<br />こんなお悩みありませんか？</h2>
+            </div>
+            <div class="cards-3">
+                <article class="card">
+                    <img class="card-img" src="../assets/illustrations/pain_phone_rush.png" alt="電話" />
+                    <h3>📞 電話のラッシュがしんどい</h3>
+                    <p>同じ説明を何度も繰り返す負担を減らし、比較に必要な情報だけを整理します。</p>
+                </article>
+                <article class="card">
+                    <img class="card-img" src="../assets/illustrations/pain_price_compare.png" alt="料金" />
+                    <h3>💴 どこが安いかわからない</h3>
+                    <p>条件をそろえて比較しやすい形にするため、料金帯の差が見えやすくなります。</p>
+                </article>
+                <article class="card">
+                    <img class="card-img" src="../assets/illustrations/pain_timing_stress.png" alt="タイミング" />
+                    <h3>🕐 連絡タイミングが読めない</h3>
+                    <p>連絡方法の希望をもとに運用設計し、不要なストレスを抑える構成です。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- S3: 3ステップ -->
+        <section id="s3" style="background:var(--primary); border-top:var(--border-thick);">
+            <div class="section-head">
+                <span class="label" style="background:var(--accent); color:var(--accent-text);">HOW IT WORKS</span>
+                <h2 style="color:var(--primary-text);">楽ミツなら3ステップ完了</h2>
+                <p style="color:var(--primary-text);">複雑な手続きは一切なし。最短1分で完結。</p>
+            </div>
+            <div class="steps">
+                <article class="step">
+                    <div class="num-badge">1</div>
+                    <div class="step-icon-wrap"><img src="../assets/icons/2.png" alt="1" /></div>
+                    <h3>条件を入力</h3>
+                    <p>エリア・人数など最小限の項目を入力。最初の入力ハードルを下げています。</p>
+                </article>
+                <article class="step">
+                    <div class="num-badge">2</div>
+                    <div class="step-icon-wrap"><img src="../assets/icons/3.png" alt="2" />
+                    </div>
+                    <h3>見積もりを受け取る</h3>
+                    <p>条件に合う候補を整理してご案内。比較しやすい順序で確認できます。</p>
+                </article>
+                <article class="step">
+                    <div class="num-badge">3</div>
+                    <div class="step-icon-wrap"><img src="../assets/icons/4.png" alt="3" />
+                    </div>
+                    <h3>比較して決定</h3>
+                    <p>料金・条件・対応を比較し、希望に合う業者を選択できます。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- S4: 料金 -->
+        <section id="s4">
+            <div class="section-head">
+                <span class="label">PRICE</span>
+                <h2>同じ引越しでも料金差が出ます</h2>
+                <p>最大で数万円の差を見つけられることも。</p>
+            </div>
+            <div class="prices">
+                <article class="price">
+                    <h3>単身</h3>
+                    <div class="value">18,000〜<br />28,000円</div>
+                    <div class="cond">距離20km以内 / 荷物少なめ</div>
+                </article>
+                <article class="price">
+                    <h3>2人</h3>
+                    <div class="value">32,000〜<br />48,000円</div>
+                    <div class="cond">距離30km以内</div>
+                </article>
+                <article class="price">
+                    <h3>家族</h3>
+                    <div class="value">55,000〜<br />85,000円</div>
+                    <div class="cond">距離40km以内</div>
+                </article>
+            </div>
+            <div style="text-align: center;">
+                <p style="font-weight:700;">※実際の料金は条件により変動します。</p>
+                <button type="button" class="cta" style="max-width:440px; margin:20px auto 0;">無料で業者を比較する</button>
+            </div>
+        </section>
+
+        <!-- S5: 選ばれる理由 -->
+        <section id="s5">
+            <div class="section-head">
+                <span class="label">WHY US</span>
+                <h2>一番安くて、一番安心。<br />あなたにピッタリの引越しが「効率よく」見つかる3つの理由</h2>
+            </div>
+            <div class="reasons">
+                <div class="reason-list">
+                    <article class="reason">
+                        <style>
+                            /* [既存のCSSに追加] PC向けのみ改行を有効にするクラス */
+                            @media (min-width: 641px) {
+                                .pc-br {
+                                    display: block;
+                                }
+                            }
+
+                            @media (max-width: 640px) {
+                                .pc-br {
+                                    display: none;
+                                }
+
+                                /* スマホでは画面端で自動改行させるため非表示 */
+                            }
+                        </style>
+                        <div class="reason-icon">🗺️</div>
+                        <div>
+                            <h3>探す手間を大幅カット！地域密着の「本当に質の高い業者」だけをリストアップ</h3>
+                            <p style="text-align: justify;">無数にある引越し業者の中から、<br class="pc-br" />自分で優良な会社を探し出すのは至難の業です。<br
+                                    class="pc-br" />当サイトでは、最初から質の高い地元業者に絞ってご紹介するため、<br
+                                    class="pc-br" />業者選びにかかる膨大な時間と手間を削減できます。</p>
+                        </div>
+                    </article>
+                    <article class="reason">
+                        <div class="reason-icon">📊</div>
+                        <div>
+                            <h3>無駄なやり取りは不要。あなたの条件で運んでくれる業者とだけピンポイントで繋がる</h3>
+                            <p style="text-align: justify;">的外れな業者からの連絡を排除し、<br
+                                    class="pc-br" />あなたの荷物量や日程などの希望条件に合致した業者だけを<br class="pc-br" />システムが自動でマッチング。<br
+                                    class="pc-br" />無駄なやり取りを極限まで減らし、サクサクと引越し準備を進められます。</p>
+                        </div>
+                    </article>
+                    <article class="reason">
+                        <div class="reason-icon">✍️</div>
+                        <div>
+                            <h3>かしこく比較して適正価格に。ムダな費用を省いて「一番お得な引越し」を実現</h3>
+                            <p style="text-align: justify;">引越し業者の空き状況によって、料金は時期ごとに大きく変動します。<br
+                                    class="pc-br" />厳選された業者間で相見積もりを取ることで、<br class="pc-br" />ぼったくりや不要なコストを未然に防ぎ、<br
+                                    class="pc-br" />あなたの引越し条件における「最もお得で合理的な価格」を引き出します。</p>
+                        </div>
+                    </article>
+                </div>
+                <aside class="proof">
+                    <h3>📍 対応エリア</h3>
+                    <div class="stat">
+                        <div class="stat-num">6府県</div>関西エリア対応
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">10社</div>最大比較
+                    </div>
+                    <img style="width:100%; border:var(--border-thick); margin-top:16px; mix-blend-mode:screen;"
+                        src="../assets/illustrations/kansai_area_map.png" alt="地図" />
+                </aside>
+            </div>
+        </section>
+
+        <!-- S6: 対応エリア -->
+        <section id="s6">
+            <div class="section-head">
+                <span class="label">AREA & TYPE</span>
+                <h2>対応エリア / 種類</h2>
+            </div>
+            <div class="split">
+                <div class="panel">
+                    <h3>🗾 エリア</h3>
+                    <div class="tag-grid">
+                        <div class="tag">大阪府</div>
+                        <div class="tag">兵庫県</div>
+                        <div class="tag">京都府</div>
+                        <div class="tag">奈良県</div>
+                        <div class="tag">和歌山県</div>
+                        <div class="tag">滋賀県</div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>🚛 種類</h3>
+                    <div class="tag-grid">
+                        <div class="tag">単身</div>
+                        <div class="tag">2人</div>
+                        <div class="tag">家族</div>
+                        <div class="tag">近距離</div>
+                        <div class="tag">長距離</div>
+                        <div class="tag">オフィス</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- S7: FAQ -->
+        <section id="s7">
+            <div class="section-head">
+                <span class="label">FAQ</span>
+                <h2>よくある質問</h2>
+            </div>
+            <div class="faq">
+                <details open>
+                    <summary>見積もりは無料ですか？</summary>
+                    <p>はい、完全無料です。</p>
+                </details>
+                <details>
+                    <summary>しつこい営業はありませんか？</summary>
+                    <p>不要な連絡を抑える方針です。</p>
+                </details>
+                <details>
+                    <summary>最短いつ引越しできますか？</summary>
+                    <p>時期と空き状況によりますが、最短対応も可能です。</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- S8: 最終CTA -->
+        <section id="s8" class="final">
+            <h2>いますぐ1分で<br />無料見積もり</h2>
+            <button type="button" class="cta">かんたん1分で無料見積もり</button>
+            <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; font-weight:700;">
+                <a style="color:var(--primary-text);" href="#">利用規約</a>
+                <a style="color:var(--primary-text);" href="#">プライバシーポリシー</a>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
