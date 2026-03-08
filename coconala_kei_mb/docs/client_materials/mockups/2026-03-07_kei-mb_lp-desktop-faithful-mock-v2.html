@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kei mb LP Desktop Faithful Mock v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #dfe4ea;
+        --paper: #eef4f9;
+        --card: #ffffff;
+        --line: #c9d7e4;
+        --ink: #1f3550;
+        --ink-sub: #587391;
+        --blue: #1f77cf;
+        --blue-deep: #0f5cae;
+        --orange: #ff8c3b;
+        --orange-deep: #e76915;
+        --icon-scale: 0.38;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        background: radial-gradient(circle at 20% 0%, #edf2f8 0%, var(--bg) 60%, #d6dde5 100%);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      .stage {
+        width: 100%;
+        min-height: 100vh;
+        padding: 56px 52px;
+      }
+
+      .label {
+        margin: 0 0 18px;
+        font-size: 36px;
+        font-weight: 500;
+        color: #4e5d6d;
+      }
+
+      .canvas {
+        width: min(1000px, 100%);
+        margin: 0 auto;
+        border: 1px solid #ccd8e4;
+        background: #fff;
+        box-shadow: 0 18px 32px rgba(15, 36, 62, 0.14);
+      }
+
+      .topbar {
+        height: 54px;
+        border-bottom: 1px solid #dbe5ef;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+      }
+
+      .logo {
+        width: 96px;
+        height: 26px;
+        object-fit: contain;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #1771cb 0%, #2383de 45%, #1a66bc 100%);
+        color: #fff;
+        padding: 26px 24px 22px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 18px;
+      }
+
+      .hero h1 {
+        margin: 8px 0 8px;
+        font-size: 62px;
+        line-height: 1.16;
+        letter-spacing: 0.01em;
+        font-weight: 900;
+      }
+
+      .hero p {
+        margin: 0 0 10px;
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .hero-badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .hero-badges span {
+        display: inline-flex;
+        align-items: center;
+        height: 30px;
+        border-radius: 999px;
+        padding: 0 11px;
+        font-size: 16px;
+        font-weight: 700;
+        background: rgba(9, 52, 103, 0.34);
+      }
+
+      .form {
+        border: 2px solid #bbcee1;
+        border-radius: 14px;
+        background: #fff;
+        color: var(--ink);
+        padding: 14px;
+      }
+
+      .form h2 {
+        margin: 0 0 10px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.5;
+      }
+
+      .control {
+        width: 100%;
+        height: 48px;
+        border-radius: 7px;
+        border: 2px solid #88a9c9;
+        margin-bottom: 7px;
+        background: #fff;
+        padding: 0 10px;
+        font-size: 16px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 52px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--orange), var(--orange-deep));
+        box-shadow: 0 7px 14px rgba(228, 103, 20, 0.28);
+        cursor: pointer;
+      }
+
+      .note {
+        margin: 7px 0 0;
+        text-align: center;
+        font-size: 14px;
+        color: #355f8d;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .section {
+        background: var(--paper);
+        border-top: 1px solid #d5e2ee;
+        padding: 24px 24px;
+      }
+
+      .section h3 {
+        margin: 0 0 12px;
+        font-size: 42px;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .section h3 em {
+        font-style: normal;
+        color: #1f72c6;
+      }
+
+      .cards3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #c9d9e7;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      .slot {
+        margin: 0 auto 8px;
+        width: 96px;
+        height: 96px;
+        border-radius: 12px;
+        border: 2px dashed #89acd0;
+        background: #f3f8fe;
+        color: #6a8fb3;
+        display: grid;
+        place-items: center;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        background-repeat: no-repeat;
+        background-size: calc(1024px * var(--icon-scale)) calc(678px * var(--icon-scale));
+      }
+
+      .card b {
+        display: block;
+        font-size: 24px;
+        line-height: 1.45;
+        margin-bottom: 4px;
+      }
+
+      .card p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--ink-sub);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .step {
+        text-align: center;
+      }
+
+      .step .round {
+        width: 116px;
+        height: 116px;
+        margin: 0 auto 6px;
+        border-radius: 50%;
+        border: 2px dashed #7ca5cf;
+        background-color: #e9f4ff;
+        color: #4f749a;
+        display: grid;
+        place-items: center;
+        font-size: 10px;
+        letter-spacing: 0.05em;
+        background-repeat: no-repeat;
+        background-size: calc(1024px * var(--icon-scale)) calc(678px * var(--icon-scale));
+      }
+
+      .step b {
+        display: block;
+        font-size: 22px;
+        margin-bottom: 2px;
+      }
+
+      .step p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .price-wrap {
+        background: #fff;
+        border: 1px solid #cad9e7;
+        border-radius: 10px;
+        padding: 11px;
+      }
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .price {
+        border: 2px solid #2f7bcb;
+        border-radius: 9px;
+        background: #fff;
+        text-align: center;
+        padding: 8px 6px;
+      }
+
+      .price b {
+        display: block;
+        font-size: 27px;
+        margin-bottom: 2px;
+      }
+
+      .price p {
+        margin: 0;
+        font-size: 42px;
+        font-weight: 900;
+      }
+
+      .price-note {
+        margin: 8px 0 11px;
+        text-align: center;
+        font-size: 16px;
+        color: var(--ink-sub);
+        line-height: 1.6;
+      }
+
+      .reason-wrap {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .reason {
+        background: #fff;
+        border: 1px solid #c3d6e9;
+        border-radius: 14px;
+        padding: 14px 12px 14px;
+        text-align: left;
+        box-shadow: 0 8px 16px rgba(31, 71, 112, 0.08);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .reason::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 4px;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(90deg, #2b84db, #58a4ea);
+      }
+
+      .reason .slot {
+        width: 96px;
+        height: 96px;
+        border-radius: 14px;
+        margin: 2px 0 10px;
+      }
+
+      .reason-catch {
+        margin: 0 0 8px;
+        font-size: 20px;
+        line-height: 1.6;
+        font-weight: 800;
+        color: #173f68;
+        max-inline-size: 36ch;
+        text-wrap: pretty;
+        line-break: strict;
+      }
+
+      .reason-detail {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--ink-sub);
+        max-inline-size: 40ch;
+        text-wrap: pretty;
+        line-break: strict;
+      }
+
+      .reason-section h3 {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 32px;
+        line-height: 1.55;
+        text-wrap: pretty;
+      }
+
+      .spr-pain-1 {
+        background-image: url("../assets/icons/2.png");
+        background-position: calc(-118px * var(--icon-scale)) calc(-300px * var(--icon-scale));
+      }
+      .spr-pain-2 {
+        background-image: url("../assets/icons/2.png");
+        background-position: calc(-670px * var(--icon-scale)) calc(-38px * var(--icon-scale));
+      }
+      .spr-pain-3 {
+        background-image: url("../assets/icons/2.png");
+        background-position: calc(-744px * var(--icon-scale)) calc(-304px * var(--icon-scale));
+      }
+      .spr-step-1 {
+        background-image: url("../assets/icons/3.png");
+        background-position: calc(-66px * var(--icon-scale)) calc(-150px * var(--icon-scale));
+      }
+      .spr-step-2 {
+        background-image: url("../assets/icons/3.png");
+        background-position: calc(-280px * var(--icon-scale)) calc(-140px * var(--icon-scale));
+      }
+      .spr-step-3 {
+        background-image: url("../assets/icons/3.png");
+        background-position: calc(-726px * var(--icon-scale)) calc(-144px * var(--icon-scale));
+      }
+      .spr-reason-1 {
+        background-image: url("../assets/icons/3.png");
+        background-position: calc(-568px * var(--icon-scale)) calc(-408px * var(--icon-scale));
+      }
+      .spr-reason-2 {
+        background-image: url("../assets/icons/2.png");
+        background-position: calc(-408px * var(--icon-scale)) calc(-280px * var(--icon-scale));
+      }
+      .spr-reason-3 {
+        background-image: url("../assets/icons/2.png");
+        background-position: calc(-736px * var(--icon-scale)) calc(-304px * var(--icon-scale));
+      }
+      .mini-head {
+        text-align: center;
+        margin: 0 0 8px;
+        font-size: 40px;
+        line-height: 1.35;
+      }
+
+      .network {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .network div {
+        min-height: 34px;
+        border: 1px dashed #b9ccdd;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        font-size: 16px;
+        color: #90a7bc;
+        background: #fff;
+      }
+
+      .faq details {
+        border-bottom: 1px solid #ccd8e4;
+        padding: 9px 2px;
+      }
+
+      .faq summary {
+        cursor: pointer;
+        list-style: none;
+        font-size: 28px;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq p {
+        margin: 5px 0 0;
+        font-size: 16px;
+        color: var(--ink-sub);
+        line-height: 1.65;
+      }
+
+      .final {
+        text-align: center;
+      }
+
+      .final h3 {
+        margin: 0 0 10px;
+        font-size: 40px;
+        line-height: 1.35;
+      }
+
+      .links {
+        margin-top: 10px;
+        display: inline-flex;
+        gap: 10px;
+        font-size: 16px;
+        color: #5a7694;
+      }
+
+      .foot {
+        text-align: center;
+        padding: 16px;
+        border-top: 1px solid #d5e0ec;
+        color: #425f7d;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 1024px) {
+        .stage {
+          padding: 24px;
+        }
+        .canvas {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .label {
+          margin-bottom: 10px;
+          font-size: 28px;
+        }
+
+        .stage {
+          padding: 14px;
+          padding-bottom: 94px;
+        }
+
+        .canvas {
+          width: min(414px, 100%);
+        }
+
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          min-height: 620px;
+          padding: 18px 14px 14px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .hero h1 {
+          font-size: 42px;
+          line-height: 1.18;
+        }
+        .hero p {
+          font-size: 24px;
+          line-height: 1.6;
+        }
+        .hero-badges span {
+          height: 28px;
+          font-size: 12px;
+          padding: 0 10px;
+        }
+        .form {
+          padding: 12px;
+        }
+        .form h2 {
+          font-size: 24px;
+        }
+        .control {
+          height: 48px;
+          font-size: 16px;
+        }
+        .cta {
+          min-height: 52px;
+          font-size: 22px;
+        }
+        .note {
+          font-size: 12px;
+        }
+        .section {
+          padding: 20px 14px;
+        }
+        .section h3,
+        .mini-head,
+        .final h3 {
+          font-size: 30px;
+          line-height: 1.4;
+        }
+        .cards3,
+        .steps,
+        .price-grid,
+        .reason-wrap,
+        .network {
+          grid-template-columns: 1fr;
+        }
+        .card,
+        .step,
+        .price,
+        .reason {
+          text-align: left;
+        }
+        .slot,
+        .step .round {
+          margin-left: 0;
+        }
+        .card b,
+        .step b {
+          font-size: 24px;
+        }
+        .reason-catch {
+          font-size: 18px;
+          line-height: 1.65;
+        }
+        .reason-detail {
+          font-size: 16px;
+          line-height: 1.75;
+        }
+        .card p,
+        .step p,
+        .faq p,
+        .price-note {
+          font-size: 16px;
+          line-height: 1.7;
+        }
+        .faq summary {
+          font-size: 24px;
+        }
+        .reason-section h3 {
+          font-size: 28px;
+          line-height: 1.6;
+        }
+        .links {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage">
+      <p class="label">Landing</p>
+
+      <section class="canvas">
+        <header class="topbar">
+          <img class="logo" src="../assets/logo/2026-03-04_kei-mb_logo_main.png" alt="楽ミツ ロゴ" />
+        </header>
+
+        <section class="hero">
+          <div class="hero-inner">
+            <div>
+              <h1>引越し料金を<br />まとめて比較</h1>
+              <p>最大10社の見積をまとめて確認</p>
+              <div class="hero-badges">
+                <span>完全無料</span>
+                <span>電話ラッシュ対策</span>
+                <span>単身〜家族対応</span>
+              </div>
+            </div>
+
+            <form class="form" action="#">
+              <h2>かんたん見積もり入力</h2>
+              <select class="control"><option>都道府県</option></select>
+              <select class="control"><option>市区町村</option></select>
+              <select class="control"><option>引越し人数</option></select>
+              <input class="control" placeholder="電話番号（任意）" />
+              <button class="cta" type="button">かんたん1分で無料見積もり</button>
+              <p class="note">※入力後に詳細確認のうえ、見積条件を整理してご案内します。</p>
+            </form>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3>引越し業者探し、こんな<em>悩み</em>ありませんか？</h3>
+          <div class="cards3">
+            <article class="card">
+              <div class="slot spr-pain-1" aria-label="電話ラッシュ アイコン"></div>
+              <b>電話ラッシュがつらい</b>
+              <p>同じ説明を繰り返す負担が大きく、比較前に疲れてしまう。</p>
+            </article>
+            <article class="card">
+              <div class="slot spr-pain-2" aria-label="比較が分かりにくい アイコン"></div>
+              <b>比較の基準が分かりにくい</b>
+              <p>条件がそろわず、どこがお得か判断しづらい。</p>
+            </article>
+            <article class="card">
+              <div class="slot spr-pain-3" aria-label="問い合わせ負担 アイコン"></div>
+              <b>1社ずつの確認が面倒</b>
+              <p>時間をかけずに候補を比較して決めたい。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3>楽ミツなら簡単3ステップ</h3>
+          <div class="steps">
+            <article class="step">
+              <div class="round spr-step-1" aria-label="STEP1 アイコン"></div>
+              <b>STEP1</b>
+              <p>フォーム入力（約1分）</p>
+            </article>
+            <article class="step">
+              <div class="round spr-step-2" aria-label="STEP2 アイコン"></div>
+              <b>STEP2</b>
+              <p>条件に沿って見積候補を整理</p>
+            </article>
+            <article class="step">
+              <div class="round spr-step-3" aria-label="STEP3 アイコン"></div>
+              <b>STEP3</b>
+              <p>比較して希望の業者を選択</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h3>同じ条件でも料金差が出ます</h3>
+          <div class="price-wrap">
+            <div class="price-grid">
+              <article class="price">
+                <b>単身</b>
+                <p>18,000〜28,000円</p>
+              </article>
+              <article class="price">
+                <b>2人</b>
+                <p>32,000〜48,000円</p>
+              </article>
+              <article class="price">
+                <b>家族</b>
+                <p>55,000〜85,000円</p>
+              </article>
+            </div>
+            <p class="price-note">※実際の料金は条件により変動します。</p>
+            <button class="cta" type="button">かんたん1分で無料見積もり</button>
+          </div>
+        </section>
+
+        <section class="section reason-section">
+          <h3>もう、引っ越し見積もりで消耗しない。<br />当サイトが選ばれる3つの理由</h3>
+          <div class="reason-wrap">
+            <article class="reason">
+              <div class="slot spr-reason-1" aria-label="理由1 アイコン"></div>
+              <p class="reason-catch">悪徳業者は徹底排除。<br />地元で信頼できる優良業者だけを厳選紹介</p>
+              <p class="reason-detail">
+                「荷物を丁寧に扱ってほしい」という不安に配慮し、
+                独自基準を満たした地域密着の業者のみをご案内します。
+              </p>
+            </article>
+            <article class="reason">
+              <div class="slot spr-reason-2" aria-label="理由2 アイコン"></div>
+              <p class="reason-catch">鳴りやまない電話営業はなし。<br />希望に合う業者だけをマッチング</p>
+              <p class="reason-detail">
+                条件をもとに対応可能な業者を優先して絞り込むため、
+                不要な連絡を抑えながらスムーズに比較できます。
+              </p>
+            </article>
+            <article class="reason">
+              <div class="slot spr-reason-3" aria-label="理由3 アイコン"></div>
+              <p class="reason-catch">相見積もりで適正価格がわかる。<br />無駄な出費を抑えた納得プラン</p>
+              <p class="reason-detail">
+                複数社を同条件で比較することで価格帯を把握しやすくなり、
+                不要なオプション費用を抑えた判断につながります。
+              </p>
+            </article>
+          </div>
+          <p class="price-note">実績データ: 対象期間 2023年4月〜2024年3月 / 出典: 自社集計</p>
+        </section>
+
+        <section class="section">
+          <h3 class="mini-head">対応エリア / 引越しの種類</h3>
+          <div class="network">
+            <div>大阪府</div>
+            <div>兵庫県</div>
+            <div>京都府</div>
+          </div>
+          <div class="network" style="margin-top: 8px">
+            <div>単身引越し</div>
+            <div>2人引越し</div>
+            <div>家族引越し</div>
+          </div>
+        </section>
+
+        <section class="section faq">
+          <details>
+            <summary><span>Q1 大手の一括見積サイトと何が違いますか？</span><span>⌄</span></summary>
+            <p>A 地域密着の提携業者に絞って比較しやすくする点が特長です。</p>
+          </details>
+          <details>
+            <summary><span>Q2 しつこい電話営業はありませんか？</span><span>⌄</span></summary>
+            <p>A 条件に合う案内を優先し、不要な連絡を抑える設計で進行します。</p>
+          </details>
+          <details>
+            <summary><span>Q3 どんな業者が対応してくれますか？</span><span>⌄</span></summary>
+            <p>A 提携基準を満たした業者が対応し、条件に応じて案内します。</p>
+          </details>
+          <details>
+            <summary><span>Q4 見積もりは本当に無料ですか？</span><span>⌄</span></summary>
+            <p>A はい、見積依頼は無料です。確定金額は各社の提示で決まります。</p>
+          </details>
+          <details>
+            <summary><span>Q5 急ぎの引越しでも対応できますか？</span><span>⌄</span></summary>
+            <p>A 日程とエリア次第で、当日〜翌営業日の案内を目指します。</p>
+          </details>
+        </section>
+
+        <section class="section final">
+          <h3>最終CTA / まずは無料比較で確認</h3>
+          <button class="cta" type="button">かんたん1分で無料見積もり</button>
+          <div class="links">
+            <a href="https://docs.google.com/document/d/1-HmFy1WL9Y3sx4ApYflqOIO5PIxqEXGTY8UoJKhe7fw/edit?usp=drivesdk">利用規約</a>
+            <span>/</span>
+            <a href="https://docs.google.com/document/d/11EMYgg4HuzcdvkfJBw0JbbK-sh340O5O9ghPspKUq5M/edit?usp=drivesdk">プライバシーポリシー</a>
+          </div>
+        </section>
+
+        <footer class="foot">運営: 引越しサポート事務局</footer>
+      </section>
+    </main>
+  </body>
+</html>
