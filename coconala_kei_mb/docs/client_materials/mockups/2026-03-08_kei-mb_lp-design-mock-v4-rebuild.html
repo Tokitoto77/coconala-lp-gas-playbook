@@ -668,7 +668,9 @@
     }
 
     .s5 {
-      background: linear-gradient(160deg, #1949df, #0b2ea6);
+      background:
+        radial-gradient(circle at 72% 80%, rgba(77, 138, 255, 0.42), rgba(77, 138, 255, 0) 50%),
+        linear-gradient(180deg, #1f4fe4 0%, #1540c3 48%, #e7e8ed 48%, #e7e8ed 100%);
       position: relative;
       overflow: hidden;
     }
@@ -685,7 +687,7 @@
       font-size: clamp(16px, 1.25vw, 20px);
       line-height: 1.75;
       font-weight: 700;
-      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.22);
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
     }
 
     .s5 .section-rule {
@@ -698,7 +700,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      align-items: stretch;
+      align-items: start;
     }
 
     .reason-card {
@@ -772,7 +774,7 @@
 
     .reason3 {
       grid-column: 1 / 2;
-      min-height: 430px;
+      min-height: 448px;
     }
 
     .proof-card {
@@ -783,6 +785,8 @@
       padding: 20px;
       min-height: 382px;
       height: 100%;
+      position: relative;
+      z-index: 2;
     }
 
     .proof-card h3 {
@@ -818,24 +822,29 @@
 
     .why-map {
       grid-column: 2 / 4;
-      border: var(--border-thick);
-      box-shadow: 8px 8px 0 rgba(18, 43, 158, 0.95);
-      background: #f2f6ff;
+      border: none;
+      box-shadow: none;
+      background: transparent;
       margin: 0;
-      padding: 12px;
-      align-self: stretch;
+      padding: 0;
+      align-self: end;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 430px;
+      align-items: flex-end;
+      justify-content: flex-end;
+      min-height: 452px;
+      position: relative;
+      z-index: 1;
+      overflow: visible;
     }
 
     .why-map img {
-      width: 100%;
-      height: 100%;
-      max-height: 404px;
+      width: min(100%, 760px);
+      height: auto;
+      max-height: 470px;
       object-fit: contain;
       display: block;
+      transform: translate(28px, 12px) scale(1.06);
+      filter: saturate(1.08) contrast(1.03) drop-shadow(0 16px 24px rgba(16, 45, 145, 0.38));
     }
 
     .s6 {
@@ -1329,6 +1338,7 @@
         margin-top: 10px;
         font-size: 15px;
         line-height: 1.7;
+        color: #eaf0ff;
       }
 
       .s5 .section-rule {
@@ -1355,11 +1365,16 @@
         grid-column: auto;
         order: 5;
         min-height: 0;
-        padding: 10px;
+        padding: 8px;
+        justify-content: center;
       }
 
       .why-map img {
+        width: 100%;
+        max-width: 520px;
         max-height: none;
+        transform: none;
+        filter: none;
       }
 
       .reason-card .thumb {
@@ -1674,7 +1689,7 @@
           </article>
 
           <figure class="why-map">
-            <img src="../assets/illustrations/kansai_area_map_3d.png" alt="関西エリア対応地図" />
+            <img src="../assets/illustrations/kansai_area_map.png" alt="関西エリア対応地図" />
           </figure>
 
         </div>
