@@ -567,37 +567,69 @@
         }
 
         .price {
-            background: var(--primary);
+            background: linear-gradient(180deg, #0d4fff 0%, #0039d1 100%);
             border: var(--border-thick);
             box-shadow: var(--shadow);
-            text-align: center;
+            text-align: left;
             color: var(--primary-text);
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+            overflow: hidden;
+        }
+
+        .price-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--ink);
+            border-bottom: var(--border-thick);
+            padding: 14px 16px;
+        }
+
+        .price-icon-wrap {
+            width: 68px;
+            height: 68px;
+            background: var(--accent);
+            border: var(--border-thick);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .price-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
         }
 
         .price h3 {
             margin: 0;
-            padding: 16px;
-            background: var(--ink);
-            color: #fff;
-            font-size: 22px;
+            color: var(--primary-text);
+            font-size: 30px;
             font-weight: 900;
-            border-bottom: var(--border-thick);
+            line-height: 1.2;
         }
 
         .price .value {
-            padding: 32px 20px 16px;
-            font-size: 40px;
+            padding: 26px 20px 18px;
+            font-size: 46px;
             font-weight: 900;
             line-height: 1.1;
             color: var(--accent);
             text-shadow: 2px 2px 0 #000;
+            text-align: center;
         }
 
         .price .cond {
-            padding: 0 20px 24px;
-            font-size: 14px;
+            margin-top: auto;
+            padding: 14px 16px 18px;
+            border-top: var(--border-thin);
+            background: rgba(0, 0, 0, 0.22);
+            font-size: 13px;
             font-weight: 700;
-            color: #fff;
+            color: var(--primary-text);
+            text-align: center;
         }
 
         .reasons {
@@ -628,9 +660,16 @@
             border: var(--border-thick);
             display: grid;
             place-items: center;
-            font-size: 28px;
             flex-shrink: 0;
             color: var(--accent-text);
+            overflow: hidden;
+        }
+
+        .reason-icon img {
+            width: 72%;
+            height: 72%;
+            object-fit: contain;
+            display: block;
         }
 
         .reason h3 {
@@ -693,6 +732,20 @@
             border: var(--border-thick);
             padding: 32px;
             box-shadow: var(--shadow);
+        }
+
+        .panel h3 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-title-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
 
         .tag-grid {
@@ -827,13 +880,22 @@
 </head>
 
 <body>
+    <!--
+      Requirements Lock Source: 2026-03-06_kei-mb_requirements-lock-v1.md
+      - 8セクション構成・順番を固定
+      - CTA文言は「かんたん1分で無料見積もり」に統一
+      - CTA配置は FV / 中盤 / 最下部
+      - 価格目安と注記を明示
+      - 利用規約 / プライバシーポリシーを実URLで配置
+      - S5の固定コピーは notes/2026-03-08_kei-mb_copy-lock-v1.md を正本とする
+    -->
     <div class="page">
         <!-- ヘッダー -->
         <header class="header">
             <div class="header-inner">
                 <a class="brand" href="#s1"><img src="../assets/logo/2026-03-04_kei-mb_logo_main.png" alt="楽ミツ" /></a>
                 <nav class="nav"><a href="#s2">特徴</a><a href="#s4">料金の目安</a><a href="#s7">よくある質問</a></nav>
-                <a class="header-cta" href="#s1">かんたん1分で無料見積もり</a>
+                <a class="header-cta" href="#lead-form">かんたん1分で無料見積もり</a>
             </div>
         </header>
 
@@ -844,8 +906,7 @@
                 <h1 class="h1">あなたの条件に合う引越し業者の見積もりを、<br /><em>まとめて比較。</em></h1>
                 <p class="hero-sub">一度の入力で、厳選した最大10社へ見積もり依頼を転送。<br />複数の業者を比較することで、納得のいく条件を見つけやすくなります。</p>
                 <div class="chips">
-                    <span class="chip" style="background:#fff; color:var(--primary); font-weight:700; border:var(--border-thick);">🎯 2023年4月〜2024年3月（自社集計）</span>
-                    <span class="chip">完全無料</span>
+                    <span class="chip">見積もり依頼は無料</span>
                     <span class="chip">最短1分</span>
                     <span class="chip">営業電話の負担を軽減</span>
                 </div>
@@ -858,9 +919,9 @@
             </div>
             <div class="hero-right">
                 <img src="../assets/illustrations/hero_moving_family.png" alt="" class="hero-illust" />
-                <form class="form-card" action="#">
-                    <span class="form-badge">🔥 最短1分で入力完了</span>
-                    <p class="form-title">無料見積もり</p>
+                <form id="lead-form" class="form-card" action="#">
+                    <span class="form-badge">🔥 STEP1 / 最短1分のかんたん入力</span>
+                    <p class="form-title">無料見積もり（STEP1）</p>
                     <div class="field"><label for="month">STEP 1：引越しの予定時期は？</label><select id="month" class="control">
                             <option>選択してください</option>
                             <option>1ヶ月以内</option>
@@ -877,6 +938,7 @@
                             <option>家族</option>
                         </select></div>
                     <button type="button" class="cta">かんたん1分で無料見積もり</button>
+                    <p class="cta-note">送信後、STEP2で詳細9項目（氏名・連絡先・住所など）を入力します。</p>
                     <p class="cta-note">※実際の料金は条件により変動します。</p>
                 </form>
             </div>
@@ -906,21 +968,21 @@
                 <article class="step">
                     <div class="num-badge">1</div>
                     <div class="step-icon-wrap"><img src="../assets/icons/2.png" alt="1" /></div>
-                    <h3>STEP 1<br/>かんたん情報入力</h3>
+                    <h3>STEP 1<br />かんたん情報入力</h3>
                     <p>スマホからスキマ時間でスムーズに入力できます。お見積もりに必要な最低限の項目だけで完了します。</p>
                 </article>
                 <article class="step">
                     <div class="num-badge">2</div>
                     <div class="step-icon-wrap"><img src="../assets/icons/3.png" alt="2" />
                     </div>
-                    <h3>STEP 2<br/>最大10社へ依頼を転送</h3>
+                    <h3>STEP 2<br />最大10社へ依頼を転送</h3>
                     <p>ご入力情報をもとに、条件に対応可能な業者（最大10社）へ一括で依頼を転送します。</p>
                 </article>
                 <article class="step">
                     <div class="num-badge">3</div>
                     <div class="step-icon-wrap"><img src="../assets/icons/4.png" alt="3" />
                     </div>
-                    <h3>STEP 3<br/>比較して選ぶだけ</h3>
+                    <h3>STEP 3<br />届いた見積もりを比較して選ぶだけ</h3>
                     <p>各社からの見積もりや提案を比較し、ご自身の希望に合った業者をご検討ください。</p>
                 </article>
             </div>
@@ -935,25 +997,43 @@
             </div>
             <div class="prices">
                 <article class="price">
-                    <h3>単身</h3>
+                    <div class="price-header">
+                        <div class="price-icon-wrap">
+                            <img class="price-icon" src="../assets/icons/one.png" alt="単身アイコン" />
+                        </div>
+                        <h3>単身</h3>
+                    </div>
                     <div class="value">18,000〜<br />28,000円</div>
+                    <p class="cond">距離20km以内 / 荷物少なめ</p>
                 </article>
                 <article class="price">
-                    <h3>2人</h3>
+                    <div class="price-header">
+                        <div class="price-icon-wrap">
+                            <img class="price-icon" src="../assets/icons/two.png" alt="2人アイコン" />
+                        </div>
+                        <h3>2人</h3>
+                    </div>
                     <div class="value">32,000〜<br />48,000円</div>
+                    <p class="cond">距離30km以内</p>
                 </article>
                 <article class="price">
-                    <h3>家族</h3>
+                    <div class="price-header">
+                        <div class="price-icon-wrap">
+                            <img class="price-icon" src="../assets/icons/three.png" alt="家族アイコン" />
+                        </div>
+                        <h3>家族</h3>
+                    </div>
                     <div class="value">55,000〜<br />85,000円</div>
+                    <p class="cond">距離40km以内</p>
                 </article>
             </div>
             <div style="text-align: center;">
                 <p style="font-weight:700;">※実際の料金は条件により変動します。</p>
-                <button type="button" class="cta" style="max-width:440px; margin:20px auto 0;">かんたん1分で無料見積もり</button>
+                <a class="cta" href="#lead-form" style="max-width:440px; margin:20px auto 0;">かんたん1分で無料見積もり</a>
             </div>
         </section>
 
-        <!-- S5: 選ばれる理由 -->
+        <!-- S5: 選ばれる理由（COPY LOCK: 2026-03-08） -->
         <section id="s5">
             <div class="section-head">
                 <span class="label">WHY US</span>
@@ -962,24 +1042,27 @@
             <div class="reasons">
                 <div class="reason-list">
                     <article class="reason">
-                        <div class="reason-icon">🤝</div>
+                        <div class="reason-icon"><img src="../assets/icons/s5_reason_01.png" alt="理由1アイコン" /></div>
                         <div>
-                            <h3>理由1：一度の入力で最大10社へ転送</h3>
-                            <p style="text-align: justify;">業者探しや連絡の手間を大幅に削減できます。</p>
+                            <h3>厳選した地域密着の優良業者のみをご案内</h3>
+                            <p style="text-align: justify;">無数の業者へむやみに個人情報が送られることはありません。ご入力いただいた条件に対応できる、地域に根ざした優良業者（最大10社）に限定して依頼を転送します。</p>
+                            <p style="text-align: justify; margin-top:12px;">そのため、過度な電話営業に悩まされるリスクを抑え、安心してじっくり比較・検討していただけます。</p>
                         </div>
                     </article>
                     <article class="reason">
-                        <div class="reason-icon">📱</div>
+                        <div class="reason-icon"><img src="../assets/icons/s5_reason_02.png" alt="理由2アイコン" /></div>
                         <div>
-                            <h3>理由2：スマホで完結するシンプルな設計</h3>
-                            <p style="text-align: justify;">認知負荷を下げる入力フローで、忙しい方でも使いやすい構成です。</p>
+                            <h3>条件がしっかり伝わるから、やり取りがスムーズ</h3>
+                            <p style="text-align: justify;">専用フォームで引越しに必要な情報を事前に入力していただくため、業者から何度も同じ確認をされる手間を省けます。</p>
+                            <p style="text-align: justify; margin-top:12px;">詳細な条件が揃った状態で各社から提案が届くため、精度の高いお見積もりを比較しやすく、ご自身の希望に合った業者をスムーズに見つけることができます。</p>
                         </div>
                     </article>
                     <article class="reason">
-                        <div class="reason-icon">⚖️</div>
+                        <div class="reason-icon"><img src="../assets/icons/s5_reason_03.png" alt="理由3アイコン" /></div>
                         <div>
-                            <h3>理由3：条件に合った業者を比較しやすい</h3>
-                            <p style="text-align: justify;">入力条件に対応可能な業者へ依頼が届くため、比較検討がしやすくなります。</p>
+                            <h3>業者のコストを抑える仕組みで、引越し費用も安くなる傾向に</h3>
+                            <p style="text-align: justify;">当サービスは、引越し業者様にご負担いただくシステム利用料（広告費）を、大手サイトの半額相当を想定した無駄のない価格に設定しています。</p>
+                            <p style="text-align: justify; margin-top:12px;">業者側のコストが抑えられている分、お客様へご提示される引越し費用のお見積もりも、よりお安く還元されやすい傾向にあります。</p>
                         </div>
                     </article>
                 </div>
@@ -1005,7 +1088,7 @@
             </div>
             <div class="split">
                 <div class="panel">
-                    <h3>🗾 エリア</h3>
+                    <h3><img class="panel-title-icon" src="../assets/icons/s6_area_icon.png" alt="" />エリア</h3>
                     <div class="tag-grid">
                         <div class="tag">大阪府</div>
                         <div class="tag">兵庫県</div>
@@ -1017,13 +1100,14 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <h3>🚛 種類</h3>
+                    <h3><img class="panel-title-icon" src="../assets/icons/s6_type_icon.png" alt="" />種類</h3>
                     <div class="tag-grid">
                         <div class="tag">単身</div>
-                        <div class="tag">2人</div>
                         <div class="tag">家族</div>
+                        <div class="tag">学生</div>
+                        <div class="tag">転勤</div>
+                        <div class="tag">近距離</div>
                         <div class="tag">長距離</div>
-                        <div class="tag">など</div>
                     </div>
                 </div>
             </div>
@@ -1050,7 +1134,7 @@
                 </details>
                 <details>
                     <summary>Q4. 見積もりは本当に無料ですか？</summary>
-                    <p>はい、当サービスのご利用およびお見積もり依頼はすべて無料です。</p>
+                    <p>はい、当サービスのご利用およびお見積もり依頼は無料です。</p>
                 </details>
                 <details>
                     <summary>Q5. 急ぎの引越しでも対応できますか？</summary>
@@ -1062,13 +1146,15 @@
         <!-- S8: 最終CTA -->
         <section id="s8" class="final">
             <h2 style="font-size:32px; line-height:1.4; margin-bottom:32px;">納得のいく引越しは、事前の比較から。<br />まずは費用の目安を確認してみませんか？</h2>
-            <button type="button" class="cta">かんたん1分で無料見積もり</button>
+            <a class="cta" href="#lead-form">かんたん1分で無料見積もり</a>
             <p style="margin-top:16px; font-weight:700; color:var(--primary-text);">※実際の料金は条件により変動します。</p>
             <div style="margin-top:48px; display:flex; justify-content:center; gap:24px; font-weight:700; flex-wrap:wrap;">
-                <a style="color:var(--primary-text); text-decoration:none;" href="#">運営会社情報</a>
-                <a style="color:var(--primary-text); text-decoration:none;" href="#">利用規約</a>
-                <a style="color:var(--primary-text); text-decoration:none;" href="#">プライバシーポリシー</a>
-                <a style="color:var(--primary-text); text-decoration:none;" href="#">お問い合わせ</a>
+                <span style="color:var(--primary-text); opacity:0.85;">運営会社情報（準備中）</span>
+                <a style="color:var(--primary-text); text-decoration:none;" target="_blank" rel="noopener noreferrer"
+                    href="https://docs.google.com/document/d/1-HmFy1WL9Y3sx4ApYflqOIO5PIxqEXGTY8UoJKhe7fw/edit?usp=drivesdk">利用規約</a>
+                <a style="color:var(--primary-text); text-decoration:none;" target="_blank" rel="noopener noreferrer"
+                    href="https://docs.google.com/document/d/11EMYgg4HuzcdvkfJBw0JbbK-sh340O5O9ghPspKUq5M/edit?usp=drivesdk">プライバシーポリシー</a>
+                <span style="color:var(--primary-text); opacity:0.85;">お問い合わせ先（準備中）</span>
             </div>
         </section>
     </div>
