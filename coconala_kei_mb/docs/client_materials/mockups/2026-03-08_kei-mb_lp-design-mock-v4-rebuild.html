@@ -668,7 +668,7 @@
     }
 
     .s5 {
-      background: url("../assets/illustrations/WHY US_back.jpg") center center / cover no-repeat;
+      background: linear-gradient(160deg, #1949df, #0b2ea6);
       position: relative;
       overflow: hidden;
     }
@@ -814,6 +814,28 @@
       font-size: clamp(16px, 1.2vw, 20px);
       font-weight: 900;
       color: #1b1b1b;
+    }
+
+    .why-map {
+      grid-column: 2 / 4;
+      border: var(--border-thick);
+      box-shadow: 8px 8px 0 rgba(18, 43, 158, 0.95);
+      background: #f2f6ff;
+      margin: 0;
+      padding: 12px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 430px;
+    }
+
+    .why-map img {
+      width: 100%;
+      height: 100%;
+      max-height: 404px;
+      object-fit: contain;
+      display: block;
     }
 
     .s6 {
@@ -1069,10 +1091,21 @@
       }
 
       .header-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "brand"
+          "cta"
+          "nav";
+        justify-items: center;
         min-height: 82px;
         padding-top: 10px;
         padding-bottom: 10px;
         gap: 8px;
+      }
+
+      .brand {
+        grid-area: brand;
       }
 
       .brand img {
@@ -1081,11 +1114,19 @@
       }
 
       .nav {
+        grid-area: nav;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 14px;
         font-size: 14px;
       }
 
       .header-cta {
+        grid-area: cta;
+        width: 100%;
+        max-width: 700px;
+        justify-content: center;
         height: 44px;
         padding: 0 14px;
         font-size: 14px;
@@ -1308,6 +1349,17 @@
         min-height: 0;
         padding: 16px 14px;
         box-shadow: 6px 6px 0 rgba(18, 43, 158, 0.92);
+      }
+
+      .why-map {
+        grid-column: auto;
+        order: 5;
+        min-height: 0;
+        padding: 10px;
+      }
+
+      .why-map img {
+        max-height: none;
       }
 
       .reason-card .thumb {
@@ -1620,6 +1672,10 @@
               <p>当サービスは、引越し業者様にご負担いただくシステム利用料（広告費）を、大手サイトの半額相当を想定した無駄のない価格に設定しています。業者側の集客コストが大きく抑えられている分、お客様へご提示される引越し費用のお見積もりにも、よりお安く還元されやすい傾向にあります。</p>
             </div>
           </article>
+
+          <figure class="why-map">
+            <img src="../assets/illustrations/kansai_area_map_3d.png" alt="関西エリア対応地図" />
+          </figure>
 
         </div>
       </div>
