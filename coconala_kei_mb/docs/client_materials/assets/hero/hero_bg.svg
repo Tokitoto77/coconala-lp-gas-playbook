@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Hero background gradient">
+  <defs>
+    <radialGradient id="g0" cx="16%" cy="10%" r="76%">
+      <stop offset="0%" stop-color="#f3af37" stop-opacity="0.98" />
+      <stop offset="44%" stop-color="#b5c07a" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#67b5ea" stop-opacity="0.86" />
+    </radialGradient>
+    <linearGradient id="g1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#25c0dc" />
+      <stop offset="100%" stop-color="#6ba7ea" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#g1)" />
+  <rect width="1400" height="900" fill="url(#g0)" />
+
+  <path d="M836 -120 A 760 760 0 0 1 836 1020" fill="none" stroke="#d9efff" stroke-width="6" stroke-opacity="0.55" />
+</svg>

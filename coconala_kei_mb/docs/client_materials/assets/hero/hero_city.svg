@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 320" role="img" aria-label="City skyline silhouette">
+  <g fill="#061f36" stroke="#061f36" stroke-linejoin="round" stroke-linecap="round" stroke-width="6">
+    <path d="M60 264h980" fill="none" />
+
+    <path d="M88 258v-82h48l18 16v66z" />
+    <path d="M158 258v94h90v-94l-12-10h-66z" transform="translate(0 -94)" />
+    <path d="M246 258v72h64v-72l-12-8h-40z" transform="translate(0 -72)" />
+
+    <path d="M324 258v110h92v-110l-14-12h-64z" transform="translate(0 -110)" />
+    <path d="M438 258v150h110v-150l-12-10h-86z" transform="translate(0 -150)" />
+    <path d="M556 258v92h76v-92l-12-10h-52z" transform="translate(0 -92)" />
+
+    <path d="M646 258v124h92v-124l-12-10h-68z" transform="translate(0 -124)" />
+    <path d="M756 258v96h86v-96l-16-10h-54z" transform="translate(0 -96)" />
+    <path d="M856 258v118h90v-118l-12-10h-66z" transform="translate(0 -118)" />
+  </g>
+
+  <g fill="#ffffff" opacity="0.9">
+    <rect x="465" y="132" width="20" height="18" rx="3" />
+    <rect x="498" y="132" width="20" height="18" rx="3" />
+    <rect x="531" y="132" width="20" height="18" rx="3" />
+    <rect x="465" y="162" width="20" height="18" rx="3" />
+    <rect x="498" y="162" width="20" height="18" rx="3" />
+    <rect x="531" y="162" width="20" height="18" rx="3" />
+    <rect x="465" y="192" width="20" height="18" rx="3" />
+    <rect x="498" y="192" width="20" height="18" rx="3" />
+    <rect x="531" y="192" width="20" height="18" rx="3" />
+
+    <rect x="682" y="152" width="18" height="16" rx="3" />
+    <rect x="710" y="152" width="18" height="16" rx="3" />
+    <rect x="682" y="178" width="18" height="16" rx="3" />
+    <rect x="710" y="178" width="18" height="16" rx="3" />
+  </g>
+
+  <g fill="none" stroke="#061f36" stroke-width="9" stroke-linecap="round">
+    <path d="M138 104c8-22 40-22 48 0" />
+    <path d="M786 138c8-20 36-20 44 0" />
+  </g>
+
+  <path d="M54 294h994" fill="none" stroke="#06253f" stroke-width="6" />
+  <path d="M54 308h994" fill="none" stroke="#06253f" stroke-width="6" stroke-dasharray="20 18" />
+</svg>
