@@ -1,0 +1,3521 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>楽ミツ | LP Design Mock v7 FV Reference Clone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #eef2f8;
+      --surface: #ffffff;
+      --line: #d5e0ee;
+      --line-strong: #b4c4d8;
+      --ink: #16243c;
+      --ink-soft: #5a6d87;
+
+      --blue-950: #0c1d4d;
+      --blue-900: #133a94;
+      --blue-800: #1c4fcc;
+      --blue-700: #2765eb;
+      --blue-500: #5f95ff;
+      --blue-300: #dce8ff;
+      --blue-100: #f3f7ff;
+
+      --orange-600: #ff7a1a;
+      --orange-500: #ff9133;
+      --orange-400: #ffb066;
+      --yellow-200: #fff176;
+      --yellow-300: #ffe45c;
+
+      --border-thick: 1px solid var(--line-strong);
+      --border-thin: 1px solid var(--line);
+      --shadow-hard: 0 28px 60px -34px rgba(12, 30, 72, 0.42);
+      --shadow-soft: 0 16px 36px -28px rgba(21, 50, 104, 0.3);
+      --shadow-panel: 0 24px 44px -30px rgba(18, 44, 102, 0.28);
+      --shadow-panel-strong: 0 30px 56px -34px rgba(15, 36, 84, 0.34);
+      --cta-shadow-hard: 0 18px 36px -20px rgba(255, 122, 26, 0.52);
+      --cta-shadow-soft: 0 12px 26px -18px rgba(255, 122, 26, 0.4);
+      --container: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 82px;
+      background: var(--bg);
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 900;
+      padding: 10px 14px;
+      border: 1px solid rgba(164, 189, 234, 0.95);
+      border-radius: 999px;
+      box-shadow: 0 14px 28px -24px rgba(26, 71, 166, 0.28);
+      margin-bottom: 16px;
+    }
+
+    .kicker-blue {
+      background: var(--blue-700);
+      color: #fff;
+    }
+
+    .kicker-white {
+      background: #fff;
+      color: var(--blue-800);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(24px, 3.1vw, 42px);
+      font-weight: 900;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      margin: 18px 0 0;
+      font-size: clamp(16px, 1.55vw, 24px);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .section-rule {
+      height: 4px;
+      background: linear-gradient(90deg, #7aa8ff 0%, #2f67ed 48%, rgba(47, 103, 237, 0) 100%);
+      border-radius: 999px;
+      margin: 22px 0 34px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+    }
+
+    .header-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      height: 82px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--ink);
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 118px;
+      height: 52px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #2448b6, #2a57d7);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: center;
+      letter-spacing: 0.04em;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo {
+      width: 188px;
+      height: 52px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo img {
+      width: 232px;
+      height: 118px;
+      object-fit: cover;
+      object-position: center 49%;
+      transform: translateX(-2px);
+      display: block;
+    }
+
+    .brand-tag {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #2d64eb, #2a57d7);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      margin-left: 52px;
+      color: #364152;
+      font-size: 13px;
+      font-weight: 700;
+      flex-wrap: nowrap;
+    }
+
+    .nav a {
+      opacity: 1;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      color: var(--blue-800);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      padding: 0 18px;
+      margin-left: auto;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--orange-500), var(--orange-600));
+      box-shadow: var(--cta-shadow-soft);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    @keyframes footerGradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero {
+      position: relative;
+      border-bottom: none;
+      padding: 0;
+      background:
+        radial-gradient(circle at 86% 86%, rgba(72, 130, 255, 0.5), transparent 22%),
+        linear-gradient(90deg, #162b4d 0%, #1c3764 32%, #2445a2 66%, #2f67ed 100%);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(500px, 560px);
+      min-height: 454px;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .hero-left {
+      background: transparent;
+      padding: 28px 88px 34px 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      display: none;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.24);
+      max-width: 560px;
+    }
+
+    .hero-title em {
+      display: block;
+      margin-top: 8px;
+      font-style: normal;
+      color: inherit;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      font-size: 0.8em;
+      line-height: 1.04;
+    }
+
+    .hero-copy {
+      display: none;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0 24px;
+      margin-top: 22px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffe671, #ffd84d);
+      color: #12203a;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 10px 20px -16px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-badge-wrap {
+      position: absolute;
+      top: 78px;
+      right: 26px;
+      width: 154px;
+      height: 168px;
+      z-index: 2;
+    }
+
+    .hero-badge-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 130'%3E%3Cellipse cx='60' cy='55' rx='55' ry='50' fill='%23FFE45C' stroke='%23FDBA11' stroke-width='2'/%3E%3Cpolygon points='35,100 50,95 30,125' fill='%23FFD54F' stroke='%23FDBA11' stroke-width='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    .hero-badge-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 12px 24px;
+      line-height: 1.03;
+    }
+
+    .hero-badge-text small {
+      font-size: 11px;
+      font-weight: 800;
+      color: #575757;
+    }
+
+    .hero-badge-text strong {
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 900;
+      color: #575757;
+    }
+
+    .hero-badge-text .badge-accent {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #e03f1f;
+    }
+
+    .hero-badge-text .num {
+      display: none;
+    }
+
+    .hero-badge-text .off {
+      display: none;
+    }
+
+    .hero-visual {
+      position: relative;
+      margin-top: 18px;
+      min-height: 374px;
+    }
+
+    .hero-workers {
+      position: absolute;
+      left: 184px;
+      bottom: 86px;
+      width: 418px;
+      filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.18));
+    }
+
+    .hero-price-row {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 3;
+    }
+
+    .hero-price-card {
+      width: 86px;
+      height: 72px;
+      padding: 11px 0 9px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 16px 26px -22px rgba(4, 14, 40, 0.85);
+      text-align: center;
+    }
+
+    .hero-price-card small {
+      display: block;
+      color: #6b7280;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .hero-price-card strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--blue-900);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .hero-price-card em {
+      font-style: normal;
+      font-size: 12px;
+    }
+
+    .hero-price-card.is-accent {
+      background: linear-gradient(180deg, #ff7e39, #ff6626);
+      border-color: rgba(255, 160, 130, 0.5);
+    }
+
+    .hero-price-card.is-accent small,
+    .hero-price-card.is-accent strong {
+      color: #fff;
+    }
+
+    .hero-price-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      color: #ffe45c;
+      font-size: 16px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.05;
+    }
+
+    .hero-city {
+      display: none;
+    }
+
+    .hero-truck {
+      display: none;
+    }
+
+    .hero-right {
+      background: transparent;
+      padding: 12px 28px 20px 0;
+      display: grid;
+      justify-items: end;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-figure {
+      position: absolute;
+      display: none;
+      pointer-events: none;
+    }
+
+    .form-card {
+      width: min(520px, 100%);
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      border-radius: 20px;
+      box-shadow: 0 26px 48px -26px rgba(0, 0, 0, 0.45);
+      padding: 0 0 20px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .form-head {
+      background: linear-gradient(180deg, #3b6cf1 0%, #2c5fe3 62%, #2457d7 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 -1px 0 rgba(10, 42, 120, 0.2);
+      padding: 22px 22px 16px;
+      text-align: center;
+    }
+
+    .form-badge {
+      display: block;
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1.2;
+      padding: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .form-title {
+      font-size: 30px;
+      color: transparent;
+      margin: 0;
+      font-weight: 900;
+      line-height: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .control {
+      width: 100%;
+      height: 58px;
+      border: 2px solid #bfdbfe;
+      border-radius: 14px;
+      background: #fff;
+      padding: 0 18px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .control:focus {
+      outline: none;
+      border-color: var(--blue-700);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .segment-group {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      height: 64px;
+      border: 2px solid #bfdbfe;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      align-items: stretch;
+    }
+
+    .segment-group.is-invalid .segment-option span {
+      border-color: #ef4444;
+      background: #fff2f2;
+    }
+
+    .segment-option {
+      display: flex;
+      height: 100%;
+      cursor: pointer;
+      min-width: 0;
+    }
+
+    .segment-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .segment-option span {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 0;
+      border-right: 1px solid #bfdbfe;
+      background: #fff;
+      color: #6b7280;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+      transition: all 0.18s ease;
+    }
+
+    .segment-option:last-child span {
+      border-right: none;
+    }
+
+    .segment-option input:checked + span {
+      background: #edf2fa;
+      color: #2457d7;
+      box-shadow: none;
+    }
+
+    .cta {
+      width: 100%;
+      min-height: 66px;
+      border: none;
+      background: linear-gradient(180deg, #ff974d 0%, #ff7a25 58%, #f06416 100%);
+      color: #fff;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: clamp(21px, 2vw, 30px);
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(240, 100, 22, 0.34), inset 0 1px 0 rgba(255,255,255,0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      padding: 12px 20px;
+      line-height: 1.15;
+      text-align: center;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(240, 100, 22, 0.4), inset 0 1px 0 rgba(255,255,255,0.22);
+      filter: brightness(1.02);
+    }
+
+    .cta-badge {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #ea5b18;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px -14px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .cta-copy strong {
+      display: block;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    .cta-copy small {
+      display: block;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .cta-note {
+      margin: 10px 0 0;
+      font-size: 10px;
+      font-weight: 500;
+      text-align: center;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    .form-step-copy {
+      margin: 8px 0 0;
+      padding: 0;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #dce8ff;
+      text-align: center;
+      background: transparent;
+    }
+
+    .form-progress {
+      display: none;
+    }
+
+    .progress-chip {
+      flex: 1;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d5e1f2;
+      border-radius: 999px;
+      background: #edf4ff;
+      color: #365486;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .progress-chip.is-active {
+      background: var(--blue-700);
+      color: #fff;
+    }
+
+    .form-step-pane {
+      display: none;
+    }
+
+    .form-step-pane.is-active {
+      display: block;
+      animation: fade-up 0.25s ease;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .req {
+      color: #b10606;
+      font-size: 12px;
+      font-weight: 900;
+      margin-left: 6px;
+    }
+
+    .control-area {
+      min-height: 120px;
+      padding: 12px 14px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .control.is-invalid {
+      border-color: #b10606;
+      background: #fff2f2;
+      box-shadow: none;
+    }
+
+    .form-error,
+    .form-success {
+      display: none;
+      margin: 0 0 14px;
+      border: 1px solid #e4c4c4;
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .form-error {
+      background: #fff1f1;
+      color: #9b1111;
+    }
+
+    .form-success {
+      background: #eefaf0;
+      color: #145227;
+    }
+
+    .form-error.is-visible,
+    .form-success.is-visible {
+      display: block;
+    }
+
+    .form-nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      align-items: stretch;
+    }
+
+    .form-nav[hidden] {
+      display: none;
+    }
+
+    .form-nav .cta {
+      width: 100%;
+    }
+
+    .cta-secondary {
+      width: 40%;
+      min-height: 66px;
+      border: 1px solid #cfdaea;
+      border-radius: 20px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 800;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .cta-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px -24px rgba(12, 30, 72, 0.42);
+    }
+
+    .consent-box {
+      margin: 16px 0 0;
+      border: 1px solid #d9e4f2;
+      border-radius: 18px;
+      background: #f7faff;
+      padding: 14px;
+    }
+
+    .consent-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 700;
+      color: #202020;
+      cursor: pointer;
+    }
+
+    .consent-check input {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--blue-700);
+      flex-shrink: 0;
+    }
+
+    .consent-link {
+      color: #0f37b8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .step-hint {
+      margin: 10px 0 0;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .form-card .cta {
+      background: linear-gradient(180deg, #3b82f6 0%, #2563eb 55%, #1d4ed8 100%);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+      font-size: inherit;
+      white-space: normal;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .form-card .cta:hover {
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .form-card-inner {
+      padding: 18px 22px 0;
+    }
+
+    .field.with-icon {
+      position: relative;
+    }
+
+    .field.with-icon .control {
+      padding-left: 54px;
+      background-repeat: no-repeat;
+      background-position: left 18px center;
+      background-size: 18px 18px;
+    }
+
+    .field-zip .control {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23678df7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16v16H4z'/%3E%3Cpath d='M4 8h16'/%3E%3C/svg%3E");
+    }
+
+    .field-pref .control {
+      appearance: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23678df7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11Z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%232563EB'/%3E%3C/svg%3E");
+      background-repeat: no-repeat, no-repeat;
+      background-position: left 18px center, right 18px center;
+      background-size: 18px 18px, 12px 12px;
+      padding-right: 42px;
+    }
+
+    .fv-logo-strip {
+      background: linear-gradient(180deg, #f7fbff 0%, #edf4ff 100%);
+      padding: 0;
+      border-bottom: none;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+      border-top: 1px solid rgba(213, 226, 246, 0.8);
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+
+    .fv-logo-strip-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 24px 16px;
+    }
+
+    .fv-logo-strip-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .fv-logo-arrows {
+      display: flex;
+      gap: 4px;
+      color: #7ea5ff;
+      font-size: 14px;
+      letter-spacing: -0.08em;
+    }
+
+    .fv-logo-strip-title strong {
+      color: #2563eb;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .fv-logo-grid {
+      margin-top: 12px;
+      position: relative;
+      overflow: hidden;
+      padding: 2px 0;
+    }
+
+    .fv-logo-grid::before,
+    .fv-logo-grid::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .fv-logo-grid::before {
+      left: 0;
+      background: linear-gradient(90deg, #eef5ff 0%, rgba(238, 245, 255, 0) 100%);
+    }
+
+    .fv-logo-grid::after {
+      right: 0;
+      background: linear-gradient(270deg, #eef5ff 0%, rgba(238, 245, 255, 0) 100%);
+    }
+
+    .fv-logo-track {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .fv-logo-item {
+      flex: 0 0 190px;
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dbe4f1;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .fv-logo-item.tone-blue {
+      color: #2d64eb;
+    }
+
+    .fv-logo-item.tone-green {
+      color: #3a8a3a;
+    }
+
+    .fv-logo-item.tone-teal {
+      color: #0f7f83;
+    }
+
+    .fv-logo-item.tone-red {
+      color: #c93b32;
+    }
+
+    .fv-logo-item.tone-orange {
+      color: #ea6a1a;
+    }
+
+    .fv-logo-item.is-accent {
+      border-color: #8cbcfe;
+      box-shadow: 0 0 0 1px rgba(141, 189, 255, 0.24) inset;
+    }
+
+    .fv-bridge {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 16px 18px;
+      border-top: 1px solid #f2d98d;
+      border-bottom: 1px solid #f2d98d;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      background: #fff5dc;
+      box-shadow: none;
+    }
+
+    .fv-bridge-badge {
+      flex: 0 0 auto;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #2d64eb, #2458d8);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      box-shadow: 0 14px 28px -22px rgba(37, 88, 216, 0.44);
+    }
+
+    .fv-bridge-copy {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+      color: #1f2f49;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .fv-bridge-copy strong {
+      color: #e13d2c;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .fv-bridge-copy span {
+      color: #41526f;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .fv-bridge-divider {
+      width: 1px;
+      height: 34px;
+      background: rgba(86, 108, 143, 0.2);
+      flex: 0 0 auto;
+    }
+
+    .fv-bridge-cta {
+      flex: 0 0 auto;
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 28px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ff974d 0%, #ff7a25 58%, #f06416 100%);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 18px 32px -24px rgba(240, 100, 22, 0.42);
+      white-space: nowrap;
+    }
+
+    section {
+      border-bottom: 1px solid rgba(199, 213, 236, 0.72);
+      padding: 72px 0;
+    }
+
+    .s2 {
+      background: linear-gradient(180deg, #edf4ff 0%, #e5efff 100%);
+      text-align: center;
+      padding-top: 48px;
+    }
+
+    .s2 .section-title {
+      color: #163b96;
+      text-shadow: none;
+      line-height: 1.26;
+      max-width: 760px;
+      margin-inline: auto;
+    }
+
+    .pain-card {
+      margin: 30px auto 0;
+      max-width: 980px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.98));
+      border: 1px solid #c8d8f4;
+      border-radius: 32px;
+      box-shadow: var(--shadow-panel-strong);
+      text-align: left;
+      padding: 50px 56px;
+      color: var(--ink);
+    }
+
+    .pain-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 22px;
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .pain-item+.pain-item {
+      margin-top: 24px;
+    }
+
+    .pain-icon {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+      border: 1px solid #d7e4f8;
+      box-shadow: 0 10px 18px -16px rgba(27, 70, 170, 0.22);
+    }
+
+    .pain-icon-img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 999px;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.16));
+    }
+
+    .pain-icon-img-1 {
+      width: 58px;
+      height: 58px;
+    }
+
+    .pain-icon-img-2 {
+      width: 58px;
+      height: 58px;
+    }
+
+    .pain-icon-img-3 {
+      width: 58px;
+      height: 58px;
+    }
+
+    .pain-foot {
+      margin: 34px auto 0;
+      color: #1848b8;
+      font-size: clamp(20px, 2.2vw, 32px);
+      font-weight: 900;
+      line-height: 1.4;
+      max-width: 860px;
+    }
+
+    .s3 {
+      background: linear-gradient(180deg, #214287 0%, #2a58ba 52%, #3470ef 100%);
+      color: #fff;
+      padding: 68px 0 60px;
+    }
+
+    .s3 .kicker {
+      background: rgba(255, 255, 255, 0.92);
+      color: #163b96;
+      border-color: rgba(184, 210, 255, 0.78);
+      box-shadow: 0 10px 18px -18px rgba(7, 20, 58, 0.26);
+      margin-bottom: 16px;
+    }
+
+    .s3 .section-title {
+      color: #f1f5ff;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.28;
+      text-shadow: 0 8px 18px rgba(7, 20, 58, 0.18);
+      max-width: 840px;
+    }
+
+    .s3 .section-rule {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.58) 0%, rgba(185, 214, 255, 0.7) 48%, rgba(255, 255, 255, 0) 100%);
+      margin: 16px 0 26px;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .step-card {
+      background: transparent;
+      color: #ffffff;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      position: relative;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-num {
+      display: none;
+    }
+
+    .step-illust {
+      position: relative;
+      margin: 0 auto 14px;
+      width: 132px;
+      height: 132px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #4f82f1 0%, #2f67ed 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 22px -16px rgba(17, 54, 144, 0.26);
+      order: 1;
+    }
+
+    .step-illust::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #edf1f7 0%, #d7deea 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    .step-illust img {
+      position: relative;
+      z-index: 1;
+      width: auto;
+      height: auto;
+      max-width: 60px;
+      max-height: 60px;
+      object-fit: contain;
+      filter: none;
+      opacity: 1;
+    }
+
+    .step-grid .step-card:nth-child(2) .step-illust img {
+      max-width: 66px;
+      max-height: 66px;
+    }
+
+    .step-grid .step-card:nth-child(3) .step-illust img {
+      max-width: 56px;
+      max-height: 56px;
+    }
+
+    .step-card h3 {
+      margin: 10px 0 0;
+      font-size: clamp(18px, 1.45vw, 24px);
+      line-height: 1.35;
+      font-weight: 900;
+      color: #ffffff;
+      order: 3;
+    }
+
+    .step-card p {
+      margin: 8px 0 0;
+      font-size: clamp(13px, 0.95vw, 16px);
+      line-height: 1.58;
+      font-weight: 700;
+      color: rgba(232, 240, 255, 0.9);
+      max-width: 30ch;
+      order: 4;
+    }
+
+    .s4 {
+      background: linear-gradient(180deg, #eef5ff 0%, #dfeaff 100%);
+      color: var(--ink);
+    }
+
+    .s4 .section-title,
+    .s4 .section-sub {
+      text-shadow: none;
+    }
+
+    .s4 .section-title {
+      color: #173b95;
+    }
+
+    .s4 .section-sub {
+      color: #5b6f8e;
+    }
+
+    .price-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .price-card {
+      border: 1px solid #c5d7f6;
+      box-shadow: var(--shadow-panel);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 247, 255, 0.96) 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-top {
+      padding: 18px 20px 10px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .price-avatar {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.28));
+    }
+
+    .price-name {
+      margin: 0;
+      font-size: clamp(22px, 1.9vw, 30px);
+      line-height: 1.08;
+      font-weight: 900;
+      color: #1d4fcf;
+      text-shadow: none;
+    }
+
+    .price-value {
+      margin: 0;
+      padding: 4px 20px 14px;
+      font-size: clamp(26px, 2.35vw, 38px);
+      font-weight: 900;
+      line-height: 1.08;
+      color: #173d9d;
+      text-shadow: none;
+    }
+
+    .price-cond {
+      margin-top: 6px;
+      background: linear-gradient(180deg, #edf4ff, #dce9ff);
+      border-top: 1px solid #c7d7f3;
+      padding: 12px 16px;
+      font-size: clamp(15px, 1.08vw, 18px);
+      font-weight: 900;
+      line-height: 1.2;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #1f4cc2;
+      text-shadow: none;
+    }
+
+    .price-cond-tight {
+      font-size: clamp(14px, 0.98vw, 16px);
+      letter-spacing: -0.03em;
+    }
+
+    .s4-note {
+      margin: 34px 0 0;
+      text-align: center;
+      font-size: clamp(17px, 1.35vw, 22px);
+      font-weight: 700;
+      color: #496182;
+      text-shadow: none;
+    }
+
+    .s4-cta-wrap {
+      max-width: 780px;
+      margin: 26px auto 0;
+    }
+
+    .s5 {
+      background: linear-gradient(180deg, #f7fbff 0%, #eaf3ff 100%);
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 56px;
+    }
+
+    .s5 .section-title {
+      color: #163b96;
+      text-shadow: none;
+    }
+
+    .s5-copy {
+      margin: 14px 0 0;
+      max-width: 980px;
+      color: #516983;
+      font-size: clamp(16px, 1.25vw, 20px);
+      line-height: 1.75;
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    .s5 .section-rule {
+      background: linear-gradient(90deg, #7aa8ff 0%, #2f67ed 48%, rgba(47, 103, 237, 0) 100%);
+      margin: 18px 0 28px;
+    }
+
+    .why-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .reason-card {
+      border: 1px solid #c7d8f4;
+      border-radius: 22px;
+      box-shadow: var(--shadow-panel);
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 360px;
+    }
+
+    .reason-card .thumb {
+      height: 136px;
+      background: linear-gradient(165deg, #f6f9ff, #d9e8ff);
+      border: 1px solid #c7d8f4;
+      border-radius: 16px;
+      margin: 7px;
+      display: grid;
+      place-items: center;
+      padding: 8px;
+      overflow: hidden;
+    }
+
+    .reason-card .thumb img {
+      width: auto;
+      height: auto;
+      max-width: 72%;
+      max-height: 108px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.18));
+      transform: none;
+    }
+
+    .reason1 .thumb img {
+      max-width: 66%;
+      max-height: 102px;
+    }
+
+    .reason2 .thumb img {
+      max-width: 74%;
+      max-height: 110px;
+    }
+
+    .reason3 .thumb img {
+      max-width: 62%;
+      max-height: 98px;
+    }
+
+    .reason-card .body {
+      padding: 10px 12px 12px;
+      flex: 1;
+    }
+
+    .reason-card h3 {
+      margin: 0;
+      font-size: clamp(17px, 1.28vw, 22px);
+      line-height: 1.35;
+      font-weight: 900;
+    }
+
+    .reason-card p {
+      margin: 6px 0 0;
+      font-size: clamp(13px, 1vw, 16px);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .reason-note {
+      margin-top: 8px;
+      font-size: clamp(12px, 1vw, 15px);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .s6 {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+    }
+
+    .s6 .section-title {
+      color: #163b96;
+      text-shadow: none;
+      font-size: clamp(28px, 3.1vw, 42px);
+      line-height: 1.24;
+    }
+
+    .s6 .section-rule {
+      margin: 20px 0 30px;
+      background: linear-gradient(90deg, #7aa8ff 0%, #2f67ed 48%, rgba(47, 103, 237, 0) 100%);
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .area-panel {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(242, 247, 255, 0.98));
+      border: 1px solid #c8d8f4;
+      border-radius: 28px;
+      box-shadow: var(--shadow-panel);
+      padding: 26px 26px 24px;
+      overflow: hidden;
+    }
+
+    .area-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 10px;
+      background: linear-gradient(90deg, #2b67ef 0%, #7ea9ff 100%);
+    }
+
+    .area-panel h3 {
+      margin: 0;
+      font-size: clamp(24px, 1.8vw, 32px);
+      font-weight: 900;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #173d9d;
+    }
+
+    .area-head-icon {
+      width: 52px;
+      height: 52px;
+      padding: 10px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f7fbff, #e1ecff);
+      border: 1px solid #c9daf5;
+      box-shadow: 0 14px 26px -22px rgba(30, 76, 182, 0.4);
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .area-items {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .area-item .label {
+      width: 100%;
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #f7fbff, #e8f0ff);
+      color: #1848b8;
+      border: 1px solid #c8d8f4;
+      border-radius: 18px;
+      box-shadow: 0 16px 28px -26px rgba(27, 70, 170, 0.42);
+      font-size: clamp(16px, 1.12vw, 20px);
+      font-weight: 900;
+      line-height: 1.2;
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    .area-panel .area-item:first-child {
+      grid-column: span 2;
+    }
+
+    .area-panel .area-item:first-child .label {
+      background: linear-gradient(135deg, #2558d8 0%, #2f67ed 100%);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 22px 34px -24px rgba(37, 88, 216, 0.48);
+      font-size: clamp(18px, 1.35vw, 24px);
+    }
+
+    .s7 {
+      background: linear-gradient(180deg, #edf5ff 0%, #dfeaff 100%);
+      color: var(--ink);
+    }
+
+    .s7 .section-title {
+      color: #163b96;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.94);
+      color: #101010;
+      border: 1px solid rgba(201, 215, 240, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 14px 26px -24px rgba(25, 54, 115, 0.18);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      margin: 0;
+      min-height: 82px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: clamp(17px, 1.25vw, 21px);
+      font-weight: 900;
+      line-height: 1.35;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .faq-q::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-meta {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+    }
+
+    .faq-icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform-origin: center;
+      transform: scale(1);
+    }
+
+    /* Normalize visual size to Q2 icon baseline */
+    .faq-list .faq-item:nth-child(1) .faq-icon-img {
+      transform: scale(1.25);
+    }
+
+    .faq-list .faq-item:nth-child(3) .faq-icon-img {
+      transform: scale(1.55);
+    }
+
+    .faq-list .faq-item:nth-child(4) .faq-icon-img {
+      transform: scale(1.48);
+    }
+
+    .faq-list .faq-item:nth-child(5) .faq-icon-img {
+      transform: scale(1.55);
+    }
+
+    .faq-a {
+      margin: 0;
+      border-top: 1px solid rgba(201, 215, 240, 0.96);
+      padding: 14px 18px;
+      font-size: clamp(14px, 1vw, 17px);
+      font-weight: 700;
+      line-height: 1.6;
+      background: #f8fbff;
+    }
+
+    .s8 {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #224488 0%, #2854b1 40%, #3470ef 100%);
+      color: #fff;
+      text-align: center;
+      border-bottom: none;
+      padding: 56px 0 80px;
+    }
+
+    .s8::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 132px;
+      background: #13213d;
+    }
+
+    .s8 .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .s8-title {
+      margin: 0 auto;
+      max-width: 860px;
+      font-size: clamp(24px, 2.3vw, 34px);
+      line-height: 1.4;
+      font-weight: 900;
+      text-shadow: none;
+    }
+
+    .s8-cta-wrap {
+      max-width: 460px;
+      margin: 24px auto 0;
+    }
+
+    .s8-cta-wrap .cta {
+      min-height: 70px;
+      font-size: clamp(18px, 1.5vw, 24px);
+      border-radius: 18px;
+      background: linear-gradient(120deg, #ff8f3d 0%, #ff6a18 45%, #f04b28 100%);
+      background-size: 220% 220%;
+      animation: footerGradientShift 5.6s ease-in-out infinite;
+      box-shadow: 0 16px 28px -22px rgba(255, 122, 26, 0.44);
+      letter-spacing: 0.015em;
+    }
+
+    .s8-note {
+      margin: 16px 0 0;
+      font-size: clamp(13px, 0.95vw, 16px);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .footer-links {
+      margin: 42px auto 0;
+      max-width: 1040px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 28px;
+      row-gap: 12px;
+    }
+
+    .footer-link {
+      min-height: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.68);
+      box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 0;
+      font-size: clamp(11px, 0.8vw, 13px);
+      font-weight: 400;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    a.footer-link:hover {
+      color: #ffffff;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1160px) {
+      .page {
+        padding-top: 98px;
+      }
+
+      .header-inner {
+        height: auto;
+        min-height: 98px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav {
+        margin-left: 0;
+      }
+
+      .brand-logo {
+        width: 188px;
+        height: 52px;
+      }
+
+      .brand-mark {
+        width: 112px;
+        height: 50px;
+        font-size: 10px;
+      }
+
+      .brand-tag {
+        min-height: 36px;
+        padding: 0 11px;
+        font-size: 13px;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .header-cta {
+        font-size: 16px;
+      }
+
+      .hero-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(420px, 450px);
+        gap: 12px;
+      }
+
+      .hero-left {
+        border-right: none;
+        padding: 32px 126px 34px 24px;
+      }
+
+      .hero-right {
+        padding: 12px 20px 20px 0;
+      }
+
+      .proof-price-row {
+        max-width: 640px;
+      }
+
+      /* Keep S5 in 3-column composition for tablet widths to match design direction. */
+    }
+
+    @media (max-width: 980px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-left {
+        padding: 40px 24px 206px;
+      }
+
+      .hero-right {
+        padding: 0 20px 36px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding-top: 172px;
+      }
+
+      .section-title {
+        text-wrap: balance;
+      }
+
+      .header-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "brand"
+          "cta"
+          "nav";
+        justify-items: center;
+        min-height: auto;
+        padding: 12px 16px;
+        gap: 10px;
+      }
+
+      .brand {
+        grid-area: brand;
+      }
+
+      .brand {
+        gap: 4px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: nowrap;
+      }
+
+      .brand-logo {
+        width: 154px;
+        height: 42px;
+      }
+
+      .brand-mark {
+        width: 92px;
+        height: 40px;
+        font-size: 8px;
+      }
+
+      .brand-tag {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .nav {
+        grid-area: nav;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 12px;
+        margin-left: 0;
+        padding: 0 4px 2px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        font-size: 13px;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .header-cta {
+        grid-area: cta;
+        width: min(100%, 320px);
+        max-width: none;
+        justify-content: center;
+        height: 44px;
+        padding: 0 14px;
+        font-size: 14px;
+      }
+
+      .fv-bridge {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .fv-bridge-copy {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      .fv-bridge-copy strong {
+        font-size: 22px;
+      }
+
+      .fv-bridge-copy span {
+        font-size: 14px;
+        white-space: normal;
+      }
+
+      .fv-bridge-divider {
+        display: none;
+      }
+
+      .fv-bridge-cta {
+        width: 100%;
+        min-height: 52px;
+        font-size: 16px;
+      }
+
+      .fv-logo-item {
+        flex-basis: 156px;
+        min-height: 40px;
+        font-size: 11px;
+      }
+
+      .hero-layout {
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 24px 16px 174px;
+        min-height: 0;
+      }
+
+      .hero-eyebrow {
+        font-size: 14px;
+        padding: 8px 10px;
+        margin-bottom: 14px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+        line-height: 1.18;
+      }
+
+      .hero-title em {
+        margin-top: 6px;
+        padding: 4px 10px 6px;
+      }
+
+      .hero-city {
+        height: 190px;
+        background-size: auto 172px;
+        background-position: center calc(100% - 12px);
+      }
+
+      .hero-truck {
+        width: 72px;
+      }
+
+      .hero-right {
+        padding: 0 12px 24px;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      section {
+        padding: 44px 0;
+      }
+
+      .s3 {
+        padding: 44px 0 40px;
+      }
+
+      .s3 .section-title {
+        font-size: 27px;
+      }
+
+      .section-rule {
+        margin: 16px 0 22px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .chip {
+        font-size: 13px;
+        min-height: 40px;
+        padding: 0 12px;
+      }
+
+      .proof-price-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .proof-price-card {
+        padding: 12px 12px 14px;
+        border-radius: 18px;
+      }
+
+      .proof-price-value {
+        font-size: 24px;
+      }
+
+      .form-title {
+        font-size: 26px;
+      }
+
+      .form-badge {
+        font-size: 15px;
+      }
+
+      .field label {
+        font-size: 12px;
+      }
+
+      .control {
+        height: 50px;
+        font-size: 16px;
+      }
+
+      .segment-option span {
+        font-size: 14px;
+      }
+
+      .segment-group {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        height: 56px;
+      }
+
+      .segment-option span {
+        min-height: 0;
+        height: 100%;
+        font-size: 13px;
+      }
+
+      .control-area {
+        min-height: 96px;
+      }
+
+      .cta {
+        min-height: 62px;
+        gap: 10px;
+      }
+
+      .form-card .cta {
+        min-height: 62px;
+      }
+
+      .cta-badge {
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+      }
+
+      .cta-copy strong {
+        font-size: 18px;
+      }
+
+      .cta-copy small {
+        font-size: 11px;
+      }
+
+      .cta-secondary {
+        width: 38%;
+        min-height: 62px;
+        font-size: 18px;
+      }
+
+      .form-nav {
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 14px;
+      }
+
+      .pain-card {
+        border-radius: 30px;
+        padding: 24px 20px;
+      }
+
+      .pain-item {
+        grid-template-columns: 34px 1fr;
+        gap: 10px;
+        font-size: 16px;
+      }
+
+      .pain-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+      }
+
+      .pain-icon-img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .pain-icon-img-1,
+      .pain-icon-img-2,
+      .pain-icon-img-3 {
+        width: 30px;
+        height: 30px;
+      }
+
+      .pain-foot {
+        margin-top: 30px;
+        font-size: 18px;
+      }
+
+      .step-grid,
+      .price-grid,
+      .area-grid,
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+
+      .step-card {
+        min-height: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .step-num {
+        display: none;
+      }
+
+      .step-illust {
+        width: 88px;
+        height: 88px;
+        margin: 18px auto 8px;
+        padding: 0;
+      }
+
+      .step-illust::before {
+        inset: 10px;
+      }
+
+      .step-illust img {
+        width: auto;
+        height: auto;
+        max-width: 36px;
+        max-height: 36px;
+        transform: none;
+        object-fit: contain;
+      }
+
+      .step-grid .step-card:nth-child(2) .step-illust img {
+        max-width: 42px;
+        max-height: 42px;
+      }
+
+      .step-grid .step-card:nth-child(3) .step-illust img {
+        max-width: 34px;
+        max-height: 34px;
+      }
+
+      .step-card h3 {
+        font-size: 19px;
+        margin-top: 8px;
+      }
+
+      .step-card p {
+        font-size: 14px;
+        max-width: 28ch;
+      }
+
+      .price-card {
+        min-height: 0;
+        max-width: 440px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .price-top {
+        padding: 14px 16px 6px;
+        gap: 12px;
+      }
+
+      .price-avatar {
+        width: 58px;
+        height: 58px;
+      }
+
+      .price-name {
+        font-size: 20px;
+        line-height: 1.05;
+      }
+
+      .price-value {
+        padding: 0 16px 10px;
+        font-size: 30px;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+
+      .price-cond {
+        margin-top: 0;
+        padding: 10px 14px;
+        font-size: 15px;
+        white-space: normal;
+      }
+
+      .price-cond-tight {
+        font-size: 14px;
+      }
+
+      .s4-note {
+        font-size: 18px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .s5 .section-title {
+        font-size: clamp(21px, 5.8vw, 26px);
+        line-height: 1.28;
+        letter-spacing: 0;
+        text-shadow: none;
+      }
+
+      .s5-copy {
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #516983;
+      }
+
+      .s5 {
+        background: linear-gradient(180deg, #f7fbff 0%, #eaf3ff 100%);
+        padding-bottom: 56px;
+      }
+
+      .s5 .section-rule {
+        margin: 14px 0 20px;
+      }
+
+      .reason1,
+      .reason2,
+      .reason3 {
+        grid-column: auto;
+        min-height: 0;
+      }
+
+      .reason-card .thumb {
+        height: 128px;
+        margin: 7px;
+        padding: 8px;
+        overflow: hidden;
+      }
+
+      .reason-card .thumb img {
+        width: auto;
+        height: auto;
+        max-width: 72%;
+        max-height: 94px;
+        transform: none;
+      }
+
+      .reason1 .thumb img {
+        max-width: 66%;
+        max-height: 88px;
+      }
+
+      .reason2 .thumb img {
+        max-width: 76%;
+        max-height: 96px;
+      }
+
+      .reason3 .thumb img {
+        max-width: 62%;
+        max-height: 84px;
+      }
+
+      .reason-card h3 {
+        font-size: 20px;
+        line-height: 1.36;
+      }
+
+      .reason-card p {
+        font-size: 14px;
+        line-height: 1.62;
+      }
+
+      .area-panel h3 {
+        font-size: 28px;
+      }
+
+      .area-head-icon {
+        width: 36px;
+        height: 36px;
+        padding: 7px;
+        border-radius: 12px;
+      }
+
+      .area-items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .area-item .label {
+        font-size: 19px;
+        min-height: 52px;
+        padding: 6px 6px;
+      }
+
+      .area-panel .area-item:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .faq-q {
+        min-height: 64px;
+        padding: 10px 12px;
+        font-size: 16px;
+      }
+
+      .faq-meta {
+        width: 38px;
+        height: 38px;
+      }
+
+      .faq-a {
+        padding: 10px 12px;
+        font-size: 15px;
+      }
+
+      .s8-note {
+        font-size: 15px;
+      }
+
+      .s8::after {
+        height: 156px;
+      }
+
+      .s8-title {
+        max-width: 680px;
+        font-size: 34px;
+        line-height: 1.38;
+      }
+
+      .s8-cta-wrap {
+        max-width: 460px;
+        margin-top: 28px;
+      }
+
+      .footer-links {
+        margin-top: 40px;
+        padding-top: 18px;
+        column-gap: 22px;
+        row-gap: 10px;
+      }
+
+      .footer-link {
+        min-height: 0;
+        font-size: 12px;
+      }
+
+      .s8-cta-wrap .cta {
+        min-height: 64px;
+        font-size: 18px;
+        border-radius: 16px;
+      }
+
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-top: 164px;
+      }
+
+      .header-inner {
+        padding: 10px 12px 12px;
+      }
+
+      .brand {
+        gap: 3px;
+      }
+
+      .brand-logo {
+        width: 132px;
+        height: 36px;
+      }
+
+      .brand-mark {
+        width: 80px;
+        height: 34px;
+        font-size: 7px;
+      }
+
+      .brand-tag {
+        min-height: 30px;
+        padding: 0 8px;
+        font-size: 11px;
+      }
+
+      .nav {
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .header-cta {
+        width: min(100%, 280px);
+        height: 42px;
+        padding: 0 12px;
+        font-size: 13px;
+      }
+
+      .hero-left {
+        padding: 20px 14px 156px;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+
+      .form-title {
+        font-size: 24px;
+      }
+
+      .fv-logo-item {
+        flex-basis: 132px;
+        min-height: 38px;
+        font-size: 10px;
+      }
+
+      .price-card {
+        max-width: 380px;
+      }
+
+      .price-top {
+        padding: 12px 14px 6px;
+        gap: 10px;
+      }
+
+      .price-avatar {
+        width: 52px;
+        height: 52px;
+      }
+
+      .price-name {
+        font-size: 18px;
+      }
+
+      .price-value {
+        padding: 0 14px 8px;
+        font-size: 26px;
+      }
+
+      .price-cond {
+        padding: 9px 12px;
+        font-size: 14px;
+      }
+
+      .price-cond-tight {
+        font-size: 13px;
+      }
+
+      .step-illust {
+        width: 80px;
+        height: 80px;
+      }
+
+      .step-illust img {
+        max-width: 34px;
+        max-height: 34px;
+      }
+
+      .step-grid .step-card:nth-child(2) .step-illust img {
+        max-width: 40px;
+        max-height: 40px;
+      }
+
+      .step-grid .step-card:nth-child(3) .step-illust img {
+        max-width: 32px;
+        max-height: 32px;
+      }
+
+      .s8 {
+        padding: 52px 0 80px;
+      }
+
+      .s8::after {
+        height: 132px;
+      }
+
+      .s8-title {
+        max-width: 15ch;
+        font-size: 22px;
+        line-height: 1.5;
+      }
+
+      .s8-cta-wrap {
+        max-width: 320px;
+        margin-top: 24px;
+      }
+
+      .s8-cta-wrap .cta {
+        min-height: 56px;
+        font-size: 16px;
+        border-radius: 14px;
+        letter-spacing: 0.01em;
+      }
+
+      .s8-note {
+        margin-top: 16px;
+        font-size: 13px;
+      }
+
+      .footer-links {
+        margin-top: 30px;
+        padding-top: 14px;
+        column-gap: 16px;
+        row-gap: 8px;
+      }
+
+      .footer-link {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    New LP file to keep rollback-safe.
+    If this version is rejected, keep using previous file without overwrite.
+
+    COPY LOCK:
+    - S3 copy follows user-specified text.
+    - S5 copy follows notes/2026-03-08_kei-mb_copy-lock-v1.md.
+
+    Icon policy:
+    - Some section icons are placeholders for now and can be replaced later.
+  -->
+  <div class="page">
+    <header class="header">
+      <div class="header-inner">
+        <a href="#s1" class="brand" aria-label="楽ミツ">
+          <span class="brand-mark">比べる・選べる<br />決められる</span>
+          <span class="brand-logo"><img src="../assets/logo/2026-03-05_kei-mb_logo_fv-glow.png" alt="楽ミツ ロゴ" /></span>
+          <span class="brand-tag">引越し比較</span>
+        </a>
+        <nav class="nav">
+          <a href="#s5">サービスの特徴</a>
+          <a href="#s3">ご利用の流れ</a>
+          <a href="#s7">よくある質問</a>
+        </nav>
+        <a class="header-cta" href="#lead-form">かんたん１分で無料見積もり</a>
+      </div>
+    </header>
+
+    <section id="s1" class="hero">
+      <div class="hero-layout">
+        <div class="hero-left">
+          <span class="hero-eyebrow">引越し費用と手間を抑えたい方へ</span>
+          <h1 class="hero-title">1番安い<br /><em>引越し業者が見つかる！</em></h1>
+          <div class="hero-pill">あなたの条件に近い料金相場も分かる！</div>
+          <div class="hero-badge-wrap" aria-hidden="true">
+            <div class="hero-badge-text">
+              <small>厳選した</small>
+              <strong>優良業者のみ</strong>
+              <div class="badge-accent">まとめて比較</div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img class="hero-workers" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663038959558/XQ8iEh7sUTCJcmM2ShzunB/moving-workers-hCWhwQUyommAkeDBugG7YK.webp" alt="引越し業者比較イラスト" />
+            <div class="hero-price-row">
+              <div class="hero-price-card">
+                <small>A社</small>
+                <strong>5.2<em>万円</em></strong>
+              </div>
+              <div class="hero-price-card">
+                <small>B社</small>
+                <strong>6<em>万円</em></strong>
+              </div>
+              <div class="hero-price-card is-accent">
+                <small>C社</small>
+                <strong>2.8<em>万円</em></strong>
+              </div>
+              <div class="hero-price-arrow">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="#FFF176" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>最安値！</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-city"></div>
+          <img class="hero-truck" src="../assets/illustrations/Track.png" alt="" />
+        </div>
+        <div class="hero-right">
+          <img class="hero-figure" src="../assets/illustrations/hero_moving_family.png" alt="" />
+          <form id="lead-form" class="form-card" action="#" data-endpoint="https://script.google.com/macros/s/AKfycbzSyeKUhpWpvlrdz4KwRG0pv8MrvT6R8g8iRk659ffQOuy7zJdm_KRzBuqnq64dcmk4/exec" novalidate>
+            <div class="form-head">
+              <span class="form-badge" id="form-badge">かんたん１分で無料見積</span>
+              <p class="form-title" id="form-title">無料見積もり（STEP1）</p>
+              <p class="form-step-copy" id="form-step-copy">最短1分で完了・完全無料</p>
+            </div>
+
+            <div class="form-progress" aria-hidden="true">
+              <span class="progress-chip is-active" data-step-chip="1">STEP1 入力</span>
+              <span class="progress-chip" data-step-chip="2">STEP2 詳細</span>
+            </div>
+
+            <div class="form-card-inner">
+              <p id="form-error" class="form-error" aria-live="polite" hidden></p>
+              <p id="form-success" class="form-success" aria-live="polite" hidden></p>
+
+              <div class="form-step-pane is-active" data-step-pane="1">
+                <div class="field with-icon field-zip">
+                  <label for="from-zip">現住所の郵便番号</label>
+                  <input id="from-zip" class="control" type="tel" inputmode="numeric" placeholder="例）1540024" maxlength="7" required />
+                </div>
+
+                <div class="field with-icon field-pref">
+                  <label for="to-prefecture">引越し先の都道府県</label>
+                  <select id="to-prefecture" class="control" required>
+                    <option value="">都道府県を選択してください</option>
+                    <option value="北海道">北海道</option>
+                    <option value="青森県">青森県</option>
+                    <option value="岩手県">岩手県</option>
+                    <option value="宮城県">宮城県</option>
+                    <option value="秋田県">秋田県</option>
+                    <option value="山形県">山形県</option>
+                    <option value="福島県">福島県</option>
+                    <option value="茨城県">茨城県</option>
+                    <option value="栃木県">栃木県</option>
+                    <option value="群馬県">群馬県</option>
+                    <option value="埼玉県">埼玉県</option>
+                    <option value="千葉県">千葉県</option>
+                    <option value="東京都">東京都</option>
+                    <option value="神奈川県">神奈川県</option>
+                    <option value="新潟県">新潟県</option>
+                    <option value="富山県">富山県</option>
+                    <option value="石川県">石川県</option>
+                    <option value="福井県">福井県</option>
+                    <option value="山梨県">山梨県</option>
+                    <option value="長野県">長野県</option>
+                    <option value="岐阜県">岐阜県</option>
+                    <option value="静岡県">静岡県</option>
+                    <option value="愛知県">愛知県</option>
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="京都府">京都府</option>
+                    <option value="大阪府">大阪府</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="和歌山県">和歌山県</option>
+                    <option value="鳥取県">鳥取県</option>
+                    <option value="島根県">島根県</option>
+                    <option value="岡山県">岡山県</option>
+                    <option value="広島県">広島県</option>
+                    <option value="山口県">山口県</option>
+                    <option value="徳島県">徳島県</option>
+                    <option value="香川県">香川県</option>
+                    <option value="愛媛県">愛媛県</option>
+                    <option value="高知県">高知県</option>
+                    <option value="福岡県">福岡県</option>
+                    <option value="佐賀県">佐賀県</option>
+                    <option value="長崎県">長崎県</option>
+                    <option value="熊本県">熊本県</option>
+                    <option value="大分県">大分県</option>
+                    <option value="宮崎県">宮崎県</option>
+                    <option value="鹿児島県">鹿児島県</option>
+                    <option value="沖縄県">沖縄県</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="people-count">引越し人数</label>
+                  <div id="people-count-group" class="segment-group" role="radiogroup" aria-label="人数">
+                    <label class="segment-option">
+                      <input type="radio" name="people-count-option" value="単身" checked />
+                      <span>単身</span>
+                    </label>
+                    <label class="segment-option">
+                      <input type="radio" name="people-count-option" value="2人" />
+                      <span>2人</span>
+                    </label>
+                    <label class="segment-option">
+                      <input type="radio" name="people-count-option" value="3人以上" />
+                      <span>3人以上</span>
+                    </label>
+                  </div>
+                  <input id="people-count" type="hidden" value="単身" />
+                </div>
+              </div>
+
+              <div class="form-step-pane" data-step-pane="2">
+                <div class="field">
+                  <label for="customer-name">氏名<span class="req">必須</span></label>
+                  <input id="customer-name" class="control" type="text" placeholder="例: 山田 太郎" maxlength="100" required />
+                </div>
+
+                <div class="field">
+                  <label for="customer-phone">電話番号<span class="req">必須</span></label>
+                  <input id="customer-phone" class="control" type="tel" inputmode="tel" placeholder="例: 080-1234-5678" maxlength="13" required />
+                </div>
+
+                <div class="field">
+                  <label for="customer-email">メール（任意）</label>
+                  <input id="customer-email" class="control" type="email" inputmode="email" placeholder="例: sample@mail.com" maxlength="100" />
+                </div>
+
+                <div class="field">
+                  <label for="move-date-note">引越希望日時（任意）</label>
+                  <input id="move-date-note" class="control" type="text" placeholder="例: 4月中旬ごろ" maxlength="100" />
+                </div>
+
+                <div class="field">
+                  <label for="building-type">建物タイプ（任意）</label>
+                  <input id="building-type" class="control" type="text" placeholder="例: マンション 3階" maxlength="100" />
+                </div>
+
+                <div class="field">
+                  <label for="request-note">その他要望欄（任意）</label>
+                  <textarea id="request-note" class="control control-area" placeholder="例: 午後希望 / 養生希望" maxlength="500"></textarea>
+                </div>
+
+                <div class="consent-box">
+                  <label class="consent-check" for="consent-check">
+                    <input id="consent-check" type="checkbox" required />
+                    <span>
+                      利用規約・プライバシーポリシーに同意の上、送信します
+                      （<a class="consent-link" href="https://docs.google.com/document/d/1-HmFy1WL9Y3sx4ApYflqOIO5PIxqEXGTY8UoJKhe7fw/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">利用規約</a>
+                      /
+                      <a class="consent-link" href="https://docs.google.com/document/d/11EMYgg4HuzcdvkfJBw0JbbK-sh340O5O9ghPspKUq5M/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>）
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="form-nav-step1" class="form-nav">
+                <button id="to-step2-btn" type="button" class="cta">
+                  <span class="cta-badge">無料</span>
+                  <span class="cta-copy">
+                    <strong>見積もりスタート</strong>
+                    <small></small>
+                  </span>
+                </button>
+              </div>
+
+              <div id="form-nav-step2" class="form-nav" hidden>
+                <button id="back-step1-btn" type="button" class="cta-secondary">戻る</button>
+                <button id="submit-btn" type="submit" class="cta">
+                  <span class="cta-badge">無料</span>
+                  <span class="cta-copy">
+                    <strong>同意して送信する</strong>
+                    <small>受付後に対応可能な業者へ転送</small>
+                  </span>
+                </button>
+              </div>
+
+              <p class="cta-note" id="form-note-main"><span>○ 厳選した優良業者へ一括依頼</span> <span>✓ 見積もり受付のための情報利用のみ</span></p>
+              <p class="step-hint">※実際の料金は条件により変動します。</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="fv-logo-strip" aria-label="提携業者ロゴ">
+      <div class="fv-logo-strip-inner">
+        <div class="fv-logo-strip-title">
+          <span class="fv-logo-arrows">▶▶▶</span>
+          <p>地域密着で少数精鋭の優良業者だけに限定！</p>
+          <span class="fv-logo-arrows">◀◀◀</span>
+        </div>
+        <div class="fv-logo-grid" data-logo-ticker>
+          <div class="fv-logo-track" data-logo-track>
+            <div class="fv-logo-item tone-blue">Espace</div>
+            <div class="fv-logo-item tone-green">Avail</div>
+            <div class="fv-logo-item tone-teal">BLEX</div>
+            <div class="fv-logo-item tone-blue">アールムーブ</div>
+            <div class="fv-logo-item tone-green">株式会社GFT</div>
+            <div class="fv-logo-item tone-red">ダイちゃんの引越サービス</div>
+            <div class="fv-logo-item tone-orange">サカイ引越センター</div>
+            <div class="fv-logo-item tone-teal">引越ASSIST</div>
+            <div class="fv-logo-item tone-red is-accent">ファイン引越サービス</div>
+            <div class="fv-logo-item tone-orange">愛の引越サービス</div>
+          </div>
+        </div>
+        <div class="fv-bridge">
+          <span class="fv-bridge-badge">無料比較</span>
+          <div class="fv-bridge-copy">
+            <strong>複数社をまとめて比較できます</strong>
+            <div class="fv-bridge-divider" aria-hidden="true"></div>
+            <span>条件に合う業者を確認して、早めに見積もりを始めましょう</span>
+          </div>
+          <a class="fv-bridge-cta" href="#lead-form">今すぐ見積もり →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="s2" class="s2">
+      <div class="container">
+        <span class="kicker kicker-blue">PAIN POINTS</span>
+        <h2 class="section-title">引越しの準備で、<br />こんなお悩みはありませんか？</h2>
+
+        <div class="pain-card">
+          <div class="pain-item"><span class="pain-icon"><img class="pain-icon-img pain-icon-img-1" src="../assets/icons/lp-v4/s2-pain/s2_pain_01_circle.png" alt="時間がない" /></span><span>1社ずつ連絡して見積もりをとる時間がない…</span></div>
+          <div class="pain-item"><span class="pain-icon"><img class="pain-icon-img pain-icon-img-2" src="../assets/icons/lp-v4/s2-pain/s2_pain_02_circle.png" alt="業者選びが不安" /></span><span>どの業者が自分の条件に合っているのかわからない…</span></div>
+          <div class="pain-item"><span class="pain-icon"><img class="pain-icon-img pain-icon-img-3" src="../assets/icons/lp-v4/s2-pain/s2_pain_03_circle.png" alt="電話営業が不安" /></span><span>複数社に申し込むと、無数の電話営業が来そうで不安…</span></div>
+        </div>
+
+        <p class="pain-foot">当サービスは、そのようなお悩みを<br />減らすことを目的に設計しています。</p>
+      </div>
+    </section>
+
+    <section id="s3" class="s3">
+      <div class="container">
+        <span class="kicker kicker-white">HOW IT WORKS</span>
+        <h2 class="section-title">ご利用はかんたん！見積もり比較までの3ステップ</h2>
+        <div class="section-rule"></div>
+
+        <div class="step-grid">
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-illust"><img src="../assets/icons/lp-v4/s3-how-it-works/HOW_IT_WORKS_STEP1_入力フォーム.png" alt="STEP1" /></div>
+            <h3>STEP 1<br />かんたん情報入力</h3>
+            <p>スマホからスキマ時間でスムーズに入力できます。お見積もりに必要な最低限の項目だけで完了します。</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-illust"><img src="../assets/icons/lp-v4/s3-how-it-works/HOW_IT_WORKS_STEP2_転送アイコン.png" alt="STEP2" /></div>
+            <h3>STEP 2<br />最大10社へ依頼を転送</h3>
+            <p>ご入力情報をもとに、条件に対応可能な業者（最大10社）へ一括で依頼を転送します。</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-illust"><img src="../assets/icons/lp-v4/s3-how-it-works/HOW_IT_WORKS_STEP3_費用見積もり.png" alt="STEP3" /></div>
+            <h3>STEP 3<br />届いた見積もりを比較して選ぶだけ</h3>
+            <p>各社からの見積もりや提案を比較し、ご自身の希望に合った業者をご検討ください。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="s4" class="s4">
+      <div class="container">
+        <span class="kicker kicker-white">PRICE</span>
+        <h2 class="section-title">気になる引越し費用の目安・想定</h2>
+        <p class="section-sub">引越し費用は条件によって幅があります。<br />以下は目安としてご参照ください。</p>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <div class="price-top">
+              <img class="price-avatar" src="../assets/icons/lp-v4/s4-price/s4_price_single_glossy.png" alt="単身アイコン" />
+              <p class="price-name">単身</p>
+            </div>
+            <p class="price-value">18,000〜<br />28,000円</p>
+            <p class="price-cond price-cond-tight">距離20km以内 / 荷物少なめ</p>
+          </article>
+
+          <article class="price-card">
+            <div class="price-top">
+              <img class="price-avatar" src="../assets/icons/lp-v4/s4-price/s4_price_couple_glossy.png" alt="2人アイコン" />
+              <p class="price-name">2人</p>
+            </div>
+            <p class="price-value">32,000〜<br />48,000円</p>
+            <p class="price-cond">距離30km以内</p>
+          </article>
+
+          <article class="price-card">
+            <div class="price-top">
+              <img class="price-avatar" src="../assets/icons/lp-v4/s4-price/s4_price_family_glossy.png" alt="家族アイコン" />
+              <p class="price-name">家族</p>
+            </div>
+            <p class="price-value">55,000〜<br />85,000円</p>
+            <p class="price-cond">距離40km以内</p>
+          </article>
+        </div>
+
+        <p class="s4-note">※実際の料金は条件により変動します。</p>
+        <div class="s4-cta-wrap"><a class="cta" href="#lead-form">かんたん1分で無料見積もり</a></div>
+      </div>
+    </section>
+
+    <!-- S5 COPY LOCK: notes/2026-03-08_kei-mb_copy-lock-v1.md -->
+    <section id="s5" class="s5">
+      <div class="container">
+        <span class="kicker kicker-white">WHY US</span>
+        <h2 class="section-title">当サービスが選ばれる3つの理由</h2>
+        <p class="s5-copy">厳選した優良業者だけを比較。連絡の負担を抑えて、納得の条件を見つけやすくします。</p>
+        <div class="section-rule"></div>
+
+        <div class="why-grid">
+          <article class="reason-card reason1">
+            <div class="thumb"><img src="../assets/icons/lp-v4/s5-why-us/s5_reason_01.png" alt="理由1" /></div>
+            <div class="body">
+              <h3>厳選した優良業者のみ（最大10社）</h3>
+              <p>条件に合う業者に絞って転送。電話が集中しすぎないよう配慮しています。</p>
+            </div>
+          </article>
+
+          <article class="reason-card reason2">
+            <div class="thumb"><img src="../assets/icons/lp-v4/s5-why-us/s5_reason_02.png" alt="理由2" /></div>
+            <div class="body">
+              <h3>条件が伝わるフォームで、やり取りがスムーズ</h3>
+              <p>必要情報をまとめて入力でき、確認の手間を減らせます。</p>
+            </div>
+          </article>
+
+          <article class="reason-card reason3">
+            <div class="thumb"><img src="../assets/icons/lp-v4/s5-why-us/s5_reason_03.png" alt="理由3" /></div>
+            <div class="body">
+              <h3>提案を見比べて、条件に合う選択がしやすい</h3>
+              <p>費用だけでなく日程や対応内容も含めて比較できます。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="s6" class="s6">
+      <div class="container">
+        <span class="kicker kicker-blue">AREA &amp; TYPE</span>
+        <h2 class="section-title">対応エリア / 引越しの種類</h2>
+        <div class="section-rule"></div>
+
+        <div class="area-grid">
+          <article class="area-panel is-area">
+            <h3><img class="area-head-icon" src="../assets/icons/lp-v4/s6-area-type/2.png" alt="" />エリア</h3>
+            <div class="area-items">
+              <div class="area-item"><span class="label">大阪府</span></div>
+              <div class="area-item"><span class="label">兵庫県</span></div>
+              <div class="area-item"><span class="label">京都府</span></div>
+              <div class="area-item"><span class="label">奈良県</span></div>
+              <div class="area-item"><span class="label">和歌山県</span></div>
+              <div class="area-item"><span class="label">滋賀県</span></div>
+              <div class="area-item"><span class="label">三重県</span></div>
+            </div>
+          </article>
+
+          <article class="area-panel is-type">
+            <h3><img class="area-head-icon" src="../assets/icons/lp-v4/s6-area-type/3.png" alt="" />種類</h3>
+            <div class="area-items">
+              <div class="area-item"><span class="label">単身</span></div>
+              <div class="area-item"><span class="label">家族</span></div>
+              <div class="area-item"><span class="label">学生</span></div>
+              <div class="area-item"><span class="label">転勤</span></div>
+              <div class="area-item"><span class="label">近距離</span></div>
+              <div class="area-item"><span class="label">長距離</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="s7" class="s7">
+      <div class="container">
+        <span class="kicker kicker-white">FAQ</span>
+        <h2 class="section-title">よくあるご質問</h2>
+        <div class="section-rule"></div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-q"><span>Q1. 大手の一括見積もりサイトと何が違いますか？</span><span class="faq-meta"><img class="faq-icon-img" src="../assets/icons/lp-v4/s7-faq/FAQ/Q1.png" alt="" /></span></summary>
+            <p class="faq-a">当サービスは依頼の転送先を最大10社に限定し、比較検討の負担を減らすシンプルな設計を心がけています。</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q"><span>Q2. しつこい電話営業はありませんか？</span><span class="faq-meta"><img class="faq-icon-img" src="../assets/icons/lp-v4/s7-faq/FAQ/Q2.png" alt="" /></span></summary>
+            <p class="faq-a">依頼先を最大10社に絞って転送する設計のため、連絡が集中しすぎないよう配慮しています。</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q"><span>Q3. どんな業者が対応してくれますか？</span><span class="faq-meta"><img class="faq-icon-img" src="../assets/icons/lp-v4/s7-faq/FAQ/Q3.png" alt="" /></span></summary>
+            <p class="faq-a">お客様の入力条件に対応可能な業者をご案内します。</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q"><span>Q4. 見積もりは本当に無料ですか？</span><span class="faq-meta"><img class="faq-icon-img" src="../assets/icons/lp-v4/s7-faq/FAQ/Q4.png" alt="" /></span></summary>
+            <p class="faq-a">はい、当サービスのご利用およびお見積もり依頼は無料です。</p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-q"><span>Q5. 急ぎの引越しでも対応できますか？</span><span class="faq-meta"><img class="faq-icon-img" src="../assets/icons/lp-v4/s7-faq/FAQ/Q5.png" alt="" /></span></summary>
+            <p class="faq-a">対応可能な業者が含まれる場合があります。まずはフォームよりご希望の日程をご入力ください。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="s8" class="s8">
+      <div class="container">
+        <h2 class="s8-title">納得のいく引越しは、事前の比較から。<br />まずは費用の目安を確認してみませんか？</h2>
+        <div class="s8-cta-wrap"><a class="cta" href="#lead-form">かんたん1分で無料見積もり</a></div>
+        <p class="s8-note">※実際の料金は条件により変動します。</p>
+
+        <div class="footer-links">
+          <span class="footer-link">運営会社情報（準備中）</span>
+          <a class="footer-link" target="_blank" rel="noopener noreferrer"
+            href="https://docs.google.com/document/d/1-HmFy1WL9Y3sx4ApYflqOIO5PIxqEXGTY8UoJKhe7fw/edit?usp=drivesdk">利用規約</a>
+          <a class="footer-link" target="_blank" rel="noopener noreferrer"
+            href="https://docs.google.com/document/d/11EMYgg4HuzcdvkfJBw0JbbK-sh340O5O9ghPspKUq5M/edit?usp=drivesdk">プライバシーポリシー</a>
+          <span class="footer-link">お問い合わせ先（準備中）</span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const form = document.getElementById("lead-form");
+      if (!form) return;
+
+      const termsLinks = {
+        terms: "https://docs.google.com/document/d/1-HmFy1WL9Y3sx4ApYflqOIO5PIxqEXGTY8UoJKhe7fw/edit?usp=drivesdk",
+        privacy: "https://docs.google.com/document/d/11EMYgg4HuzcdvkfJBw0JbbK-sh340O5O9ghPspKUq5M/edit?usp=drivesdk",
+      };
+
+      const stepPane1 = form.querySelector('[data-step-pane="1"]');
+      const stepPane2 = form.querySelector('[data-step-pane="2"]');
+      const chips = Array.from(form.querySelectorAll("[data-step-chip]"));
+      const badge = document.getElementById("form-badge");
+      const title = document.getElementById("form-title");
+      const stepCopy = document.getElementById("form-step-copy");
+      const noteMain = document.getElementById("form-note-main");
+      const errorBox = document.getElementById("form-error");
+      const successBox = document.getElementById("form-success");
+      const navStep1 = document.getElementById("form-nav-step1");
+      const navStep2 = document.getElementById("form-nav-step2");
+      const toStep2Btn = document.getElementById("to-step2-btn");
+      const backStep1Btn = document.getElementById("back-step1-btn");
+      const submitBtn = document.getElementById("submit-btn");
+      const peopleCountOptions = Array.from(form.querySelectorAll('input[name="people-count-option"]'));
+
+      const fields = {
+        fromZip: document.getElementById("from-zip"),
+        toPrefecture: document.getElementById("to-prefecture"),
+        peopleCount: document.getElementById("people-count"),
+        peopleCountGroup: document.getElementById("people-count-group"),
+        customerName: document.getElementById("customer-name"),
+        customerPhone: document.getElementById("customer-phone"),
+        customerEmail: document.getElementById("customer-email"),
+        moveDateNote: document.getElementById("move-date-note"),
+        buildingType: document.getElementById("building-type"),
+        requestNote: document.getElementById("request-note"),
+        consentCheck: document.getElementById("consent-check"),
+      };
+
+      const logoTicker = document.querySelector("[data-logo-ticker]");
+      const logoTrack = logoTicker ? logoTicker.querySelector("[data-logo-track]") : null;
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const logoBaseMarkup = logoTrack ? logoTrack.innerHTML : "";
+
+      const emojiRegex = (() => {
+        try {
+          return /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}]/u;
+        } catch (_error) {
+          return /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
+        }
+      })();
+
+      let currentStep = 1;
+      let logoTickerFrame = 0;
+      let logoTickerLastTime = 0;
+      let logoTickerOffset = 0;
+      let logoLoopWidth = 0;
+      let logoTickerPaused = false;
+
+      function stopLogoTicker() {
+        if (!logoTickerFrame) return;
+        cancelAnimationFrame(logoTickerFrame);
+        logoTickerFrame = 0;
+      }
+
+      function buildLogoTicker() {
+        if (!logoTicker || !logoTrack || !logoBaseMarkup) return;
+
+        stopLogoTicker();
+        logoTickerOffset = 0;
+        logoTickerLastTime = 0;
+        logoTrack.style.transform = "translate3d(0, 0, 0)";
+        logoTrack.innerHTML = logoBaseMarkup;
+
+        logoLoopWidth = logoTrack.scrollWidth;
+        if (!logoLoopWidth) return;
+
+        while (logoTrack.scrollWidth < logoTicker.clientWidth + logoLoopWidth * 2) {
+          logoTrack.insertAdjacentHTML("beforeend", logoBaseMarkup);
+        }
+      }
+
+      function tickLogoTicker(timestamp) {
+        if (!logoTrack || !logoLoopWidth) return;
+
+        if (!logoTickerLastTime) logoTickerLastTime = timestamp;
+        const delta = Math.min((timestamp - logoTickerLastTime) / 1000, 0.05);
+        logoTickerLastTime = timestamp;
+
+        if (!logoTickerPaused) {
+          logoTickerOffset += 42 * delta;
+          if (logoTickerOffset >= logoLoopWidth) {
+            logoTickerOffset -= logoLoopWidth;
+          }
+          logoTrack.style.transform = `translate3d(${-logoTickerOffset}px, 0, 0)`;
+        }
+
+        logoTickerFrame = requestAnimationFrame(tickLogoTicker);
+      }
+
+      function startLogoTicker() {
+        if (!logoTicker || !logoTrack || prefersReducedMotion.matches) return;
+        buildLogoTicker();
+        if (!logoLoopWidth) return;
+        logoTickerFrame = requestAnimationFrame(tickLogoTicker);
+      }
+
+      function clearMessages() {
+        errorBox.textContent = "";
+        successBox.textContent = "";
+        errorBox.hidden = true;
+        successBox.hidden = true;
+        errorBox.classList.remove("is-visible");
+        successBox.classList.remove("is-visible");
+      }
+
+      function clearInvalid() {
+        const controls = form.querySelectorAll(".control, .segment-group");
+        controls.forEach((control) => control.classList.remove("is-invalid"));
+      }
+
+      function setInvalid(control) {
+        if (!control) return;
+        control.classList.add("is-invalid");
+        const focusTarget = control.classList.contains("segment-group")
+          ? control.querySelector('input[name="people-count-option"]')
+          : control;
+        if (focusTarget && typeof focusTarget.focus === "function") focusTarget.focus();
+      }
+
+      function showError(message, control) {
+        errorBox.textContent = message;
+        errorBox.hidden = false;
+        successBox.hidden = true;
+        errorBox.classList.add("is-visible");
+        successBox.classList.remove("is-visible");
+        setInvalid(control);
+      }
+
+      function showSuccess(message) {
+        successBox.textContent = message;
+        successBox.hidden = false;
+        errorBox.hidden = true;
+        successBox.classList.add("is-visible");
+        errorBox.classList.remove("is-visible");
+      }
+
+      function hasEmoji(value) {
+        return emojiRegex.test(value);
+      }
+
+      function showStep(step) {
+        currentStep = step;
+        clearMessages();
+        clearInvalid();
+
+        const step1Active = step === 1;
+        stepPane1.classList.toggle("is-active", step1Active);
+        stepPane2.classList.toggle("is-active", !step1Active);
+        navStep1.hidden = !step1Active;
+        navStep2.hidden = step1Active;
+
+        chips.forEach((chip) => {
+          const isActive = Number(chip.dataset.stepChip) === step;
+          chip.classList.toggle("is-active", isActive);
+        });
+
+        if (step1Active) {
+          badge.textContent = "かんたん１分で無料見積";
+          title.textContent = "無料見積もり（STEP1）";
+          stepCopy.textContent = "最短1分で完了・完全無料";
+          noteMain.innerHTML = "<span>○ 厳選した優良業者へ一括依頼</span> <span>✓ 見積もり受付のための情報利用のみ</span>";
+          return;
+        }
+
+        badge.textContent = "STEP2 / 連絡先と詳細を入力";
+        title.textContent = "無料見積もり（STEP2）";
+        stepCopy.textContent = "必須2項目（氏名・電話）を入力して送信してください。";
+        noteMain.textContent = "同意のうえ送信すると受付完了となります。";
+      }
+
+      function getTrimmed(control) {
+        return control.value.trim();
+      }
+
+      function validateMaxLength(control, max, message) {
+        if (getTrimmed(control).length > max) {
+          showError(message, control);
+          return false;
+        }
+        return true;
+      }
+
+      function validateNoEmoji(control, message) {
+        if (hasEmoji(getTrimmed(control))) {
+          showError(message, control);
+          return false;
+        }
+        return true;
+      }
+
+      function validateStep1() {
+        clearMessages();
+        clearInvalid();
+
+        const zip = getTrimmed(fields.fromZip);
+        if (!zip) {
+          showError("現住所の郵便番号を入力してください", fields.fromZip);
+          return false;
+        }
+        if (!/^[0-9]{7}$/.test(zip)) {
+          showError("郵便番号は7桁の半角数字で入力してください", fields.fromZip);
+          return false;
+        }
+        if (!fields.toPrefecture.value) {
+          showError("引越し先の都道府県を選択してください", fields.toPrefecture);
+          return false;
+        }
+
+        if (!fields.peopleCount.value) {
+          showError("人数を選択してください", fields.peopleCountGroup);
+          return false;
+        }
+
+        return true;
+      }
+
+      function validateStep2() {
+        clearMessages();
+        clearInvalid();
+
+        if (!getTrimmed(fields.customerName)) {
+          showError("氏名を入力してください", fields.customerName);
+          return false;
+        }
+        if (!validateMaxLength(fields.customerName, 100, "氏名は100文字以内で入力してください")) return false;
+        if (!validateNoEmoji(fields.customerName, "氏名に絵文字は使用できません")) return false;
+
+        const phone = getTrimmed(fields.customerPhone);
+        if (!phone) {
+          showError("電話番号を入力してください", fields.customerPhone);
+          return false;
+        }
+        if (!validateNoEmoji(fields.customerPhone, "電話番号に絵文字は使用できません")) return false;
+        if (!/^[0-9-]+$/.test(phone)) {
+          showError("電話番号を確認してください", fields.customerPhone);
+          return false;
+        }
+        const digits = phone.replace(/-/g, "");
+        if (digits.length < 10 || digits.length > 11) {
+          showError("電話番号を確認してください", fields.customerPhone);
+          return false;
+        }
+
+        const email = getTrimmed(fields.customerEmail);
+        if (email) {
+          if (!validateNoEmoji(fields.customerEmail, "メールアドレスに絵文字は使用できません")) return false;
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError("メールアドレスを確認してください", fields.customerEmail);
+            return false;
+          }
+          if (!validateMaxLength(fields.customerEmail, 100, "メールアドレスは100文字以内で入力してください")) return false;
+        }
+
+        if (getTrimmed(fields.moveDateNote)) {
+          if (!validateMaxLength(fields.moveDateNote, 100, "引越希望日時は100文字以内で入力してください")) return false;
+          if (!validateNoEmoji(fields.moveDateNote, "引越希望日時に絵文字は使用できません")) return false;
+        }
+
+        if (getTrimmed(fields.buildingType)) {
+          if (!validateMaxLength(fields.buildingType, 100, "建物タイプは100文字以内で入力してください")) return false;
+          if (!validateNoEmoji(fields.buildingType, "建物タイプに絵文字は使用できません")) return false;
+        }
+
+        if (getTrimmed(fields.requestNote)) {
+          if (!validateMaxLength(fields.requestNote, 500, "その他要望欄は500文字以内で入力してください")) return false;
+          if (!validateNoEmoji(fields.requestNote, "その他要望欄に絵文字は使用できません")) return false;
+        }
+
+        if (!fields.consentCheck.checked) {
+          showError("同意チェックを選択してください", fields.consentCheck);
+          return false;
+        }
+
+        return true;
+      }
+
+      function buildPayload() {
+        return {
+          submitted_at: new Date().toISOString(),
+          current_zip: getTrimmed(fields.fromZip),
+          destination_prefecture: fields.toPrefecture.value,
+          people_count: fields.peopleCount.value,
+          customer: {
+            name: getTrimmed(fields.customerName),
+            phone: getTrimmed(fields.customerPhone),
+            email: getTrimmed(fields.customerEmail),
+          },
+          move_date_note: getTrimmed(fields.moveDateNote),
+          building_type: getTrimmed(fields.buildingType),
+          request_note: getTrimmed(fields.requestNote),
+          consent: {
+            agreed: fields.consentCheck.checked,
+            terms_url: termsLinks.terms,
+            privacy_url: termsLinks.privacy,
+          },
+          source: "lp_v4",
+        };
+      }
+
+      async function submitLead(payload) {
+        const endpoint = (form.dataset.endpoint || "").trim();
+        if (!endpoint || endpoint.indexOf("__") === 0) {
+          await new Promise((resolve) => setTimeout(resolve, 450));
+          return;
+        }
+
+        const isGasEndpoint = endpoint.indexOf("script.google.com") >= 0;
+
+        if (isGasEndpoint) {
+          await fetch(endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+            body: JSON.stringify(payload),
+          });
+          return;
+        }
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          throw new Error(`status:${response.status}`);
+        }
+      }
+
+      function toggleSubmitting(isSubmitting) {
+        toStep2Btn.disabled = isSubmitting;
+        backStep1Btn.disabled = isSubmitting;
+        submitBtn.disabled = isSubmitting;
+        submitBtn.textContent = isSubmitting ? "送信中..." : "同意して送信する";
+      }
+
+      toStep2Btn.addEventListener("click", () => {
+        if (!validateStep1()) return;
+        showStep(2);
+      });
+
+      peopleCountOptions.forEach((option) => {
+        option.addEventListener("change", () => {
+          fields.peopleCount.value = option.value;
+          fields.peopleCountGroup.classList.remove("is-invalid");
+        });
+      });
+
+      if (logoTicker && logoTrack) {
+        const rebuildLogoTicker = () => {
+          if (prefersReducedMotion.matches) {
+            stopLogoTicker();
+            logoTrack.innerHTML = logoBaseMarkup;
+            logoTrack.style.transform = "translate3d(0, 0, 0)";
+            return;
+          }
+          startLogoTicker();
+        };
+
+        logoTicker.addEventListener("mouseenter", () => {
+          logoTickerPaused = true;
+        });
+
+        logoTicker.addEventListener("mouseleave", () => {
+          logoTickerPaused = false;
+        });
+
+        if (typeof prefersReducedMotion.addEventListener === "function") {
+          prefersReducedMotion.addEventListener("change", rebuildLogoTicker);
+        }
+
+        window.addEventListener("resize", rebuildLogoTicker);
+        startLogoTicker();
+      }
+
+      backStep1Btn.addEventListener("click", () => {
+        showStep(1);
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!validateStep2()) return;
+
+        const payload = buildPayload();
+        toggleSubmitting(true);
+        clearMessages();
+
+        try {
+          await submitLead(payload);
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "form_submit",
+            cv_event_name: "form_submit",
+            lead_prefecture: payload.current_address.prefecture,
+          });
+          form.reset();
+          showStep(1);
+          showSuccess("送信ありがとうございます。内容を確認し、担当よりご連絡します。");
+        } catch (_error) {
+          showError("送信に失敗しました。時間をおいて再度お試しください。");
+        } finally {
+          toggleSubmitting(false);
+        }
+      });
+
+      showStep(1);
+    })();
+  </script>
+</body>
+
+</html>
