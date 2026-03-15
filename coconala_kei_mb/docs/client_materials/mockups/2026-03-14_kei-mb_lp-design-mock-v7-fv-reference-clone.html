@@ -70,7 +70,7 @@
     .page {
       max-width: 1280px;
       margin: 0 auto;
-      padding-top: 82px;
+      padding-top: 0;
       background: var(--bg);
     }
 
@@ -125,10 +125,8 @@
     }
 
     .header {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 30;
       background: rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid #e2e8f0;
@@ -238,6 +236,11 @@
       font-weight: 900;
       line-height: 1;
       white-space: nowrap;
+    }
+
+    section[id],
+    form[id] {
+      scroll-margin-top: 112px;
     }
 
     @keyframes footerGradientShift {
@@ -480,106 +483,404 @@
     }
 
     .form-card {
-      width: min(520px, 100%);
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.48);
-      border-radius: 20px;
-      box-shadow: 0 26px 48px -26px rgba(0, 0, 0, 0.45);
-      padding: 0 0 20px;
+      width: min(548px, 100%);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(246, 250, 255, 0.98) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 28px;
+      box-shadow: 0 34px 70px -38px rgba(10, 37, 88, 0.48);
+      padding: 0 0 24px;
       position: relative;
       z-index: 1;
       overflow: hidden;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(126, 165, 255, 0.28), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 24%);
+      pointer-events: none;
+    }
+
+    .form-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .form-head {
-      background: linear-gradient(180deg, #3b6cf1 0%, #2c5fe3 62%, #2457d7 100%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: inset 0 -1px 0 rgba(10, 42, 120, 0.2);
-      padding: 22px 22px 16px;
-      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(82, 130, 255, 0.18), transparent 38%),
+        linear-gradient(180deg, #2b62ea 0%, #1f53d6 52%, #173ca7 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 -1px 0 rgba(10, 42, 120, 0.22);
+      padding: 18px 22px 20px;
+      text-align: left;
+    }
+
+    .form-head-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     .form-badge {
-      display: block;
-      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      border: none;
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0;
-      line-height: 1.2;
-      padding: 0;
-      border-radius: 0;
-      margin-bottom: 0;
+      letter-spacing: 0.02em;
+      line-height: 1;
       text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .form-status {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .status-pill {
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(13, 28, 78, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #dbe8ff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
     }
 
     .form-title {
-      font-size: 30px;
-      color: transparent;
-      margin: 0;
+      margin: 14px 0 0;
+      font-size: clamp(27px, 2.9vw, 34px);
+      color: #fff;
       font-weight: 900;
-      line-height: 0;
-      height: 0;
-      overflow: hidden;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    .form-step-copy {
+      margin: 10px 0 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.6;
+      color: #d9e8ff;
+      text-align: left;
+      background: transparent;
+    }
+
+    .form-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .summary-item {
+      min-height: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(6px);
+    }
+
+    .summary-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(220, 232, 255, 0.86);
+      line-height: 1.2;
+    }
+
+    .summary-value {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .form-progress {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 16px 22px 0;
+    }
+
+    .progress-chip {
+      min-height: 56px;
+      display: grid;
+      align-content: center;
+      gap: 3px;
+      padding: 10px 14px;
+      border: 1px solid #dbe5f4;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f7faff 0%, #eef4fc 100%);
+      color: #365486;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+    }
+
+    .progress-chip strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0;
+      color: #1d3358;
+    }
+
+    .progress-chip small {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b7f99;
+    }
+
+    .progress-chip.is-active {
+      background: linear-gradient(180deg, #2d64eb 0%, #2458d8 100%);
+      border-color: rgba(36, 88, 216, 0.4);
+      box-shadow: 0 14px 28px -24px rgba(36, 88, 216, 0.5);
+      color: #dce8ff;
+    }
+
+    .progress-chip.is-active strong,
+    .progress-chip.is-active small {
+      color: #fff;
+    }
+
+    .selection-preview {
+      margin: 14px 22px 0;
+      padding: 16px 18px;
+      border-radius: 22px;
+      border: 1px solid #dbe6f5;
+      background: linear-gradient(180deg, rgba(247, 250, 255, 0.98) 0%, rgba(239, 245, 255, 0.96) 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .selection-preview-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .selection-preview-title {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 900;
+      color: #1e3a74;
+      letter-spacing: 0.04em;
+    }
+
+    .selection-preview-note {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 700;
+      color: #5f7190;
+      text-align: right;
+    }
+
+    .selection-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .selection-item {
+      min-height: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #d6e3f7;
+      box-shadow: 0 12px 24px -22px rgba(21, 50, 104, 0.3);
+    }
+
+    .selection-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #789;
+      line-height: 1.2;
+    }
+
+    .selection-value {
+      font-size: 16px;
+      font-weight: 900;
+      color: #16243c;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .form-card-inner {
+      padding: 18px 22px 0;
+    }
+
+    .pane-intro {
+      margin-bottom: 16px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+      border: 1px solid #dce7f7;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .pane-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .pane-kicker {
+      margin: 0 0 6px;
+      font-size: 11px;
+      font-weight: 900;
+      color: #2765eb;
+      letter-spacing: 0.08em;
+    }
+
+    .pane-title-row h3 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: #132a52;
+      letter-spacing: -0.02em;
+    }
+
+    .pane-tag {
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #d7e3f8;
+      color: #2457d7;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .pane-intro p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.65;
+      color: #5d708d;
+    }
+
+    .field-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .field {
-      margin-bottom: 16px;
+      margin-bottom: 0;
+    }
+
+    .field-span-2 {
+      grid-column: 1 / -1;
     }
 
     .field label {
       display: block;
       font-size: 13px;
-      font-weight: 700;
-      color: #6b7280;
+      font-weight: 800;
+      color: #42526a;
       margin-bottom: 8px;
+    }
+
+    .field-meta {
+      margin: 8px 2px 0;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #718198;
     }
 
     .control {
       width: 100%;
-      height: 58px;
-      border: 2px solid #bfdbfe;
-      border-radius: 14px;
-      background: #fff;
+      height: 60px;
+      border: 1.5px solid #c8d7ef;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
       padding: 0 18px;
-      font-size: 17px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 800;
       color: var(--ink);
       font-family: inherit;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
       transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .control::placeholder {
+      color: #95a6bb;
+      font-weight: 600;
     }
 
     .control:focus {
       outline: none;
       border-color: var(--blue-700);
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
     }
 
     .segment-group {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0;
-      height: 64px;
-      border: 2px solid #bfdbfe;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #fff;
+      gap: 6px;
+      padding: 6px;
+      border: 1.5px solid #c8d7ef;
+      border-radius: 20px;
+      background: #eef4ff;
       align-items: stretch;
     }
 
-    .segment-group.is-invalid .segment-option span {
-      border-color: #ef4444;
+    .segment-group.is-invalid {
+      border-color: #b10606;
       background: #fff2f2;
     }
 
     .segment-option {
       display: flex;
-      height: 100%;
-      cursor: pointer;
       min-width: 0;
+      cursor: pointer;
     }
 
     .segment-option input {
@@ -590,30 +891,43 @@
 
     .segment-option span {
       width: 100%;
-      height: 100%;
-      min-height: 0;
+      min-height: 84px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-sizing: border-box;
-      border-radius: 0;
-      border-right: 1px solid #bfdbfe;
-      background: #fff;
-      color: #6b7280;
-      font-size: 17px;
-      font-weight: 800;
+      gap: 4px;
+      padding: 10px 6px;
+      border-radius: 14px;
+      background: transparent;
+      color: #4d6581;
       text-align: center;
       transition: all 0.18s ease;
     }
 
-    .segment-option:last-child span {
-      border-right: none;
+    .segment-option span strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .segment-option span small {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #7d8ea7;
     }
 
     .segment-option input:checked + span {
-      background: #edf2fa;
+      background: #fff;
       color: #2457d7;
-      box-shadow: none;
+      box-shadow: 0 14px 26px -22px rgba(36, 88, 216, 0.42);
+    }
+
+    .segment-option input:checked + span small {
+      color: #5a77c7;
     }
 
     .cta {
@@ -680,50 +994,6 @@
       color: rgba(255, 255, 255, 0.82);
     }
 
-    .cta-note {
-      margin: 10px 0 0;
-      font-size: 10px;
-      font-weight: 500;
-      text-align: center;
-      color: #9ca3af;
-      line-height: 1.6;
-    }
-
-    .form-step-copy {
-      margin: 8px 0 0;
-      padding: 0;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1.3;
-      color: #dce8ff;
-      text-align: center;
-      background: transparent;
-    }
-
-    .form-progress {
-      display: none;
-    }
-
-    .progress-chip {
-      flex: 1;
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #d5e1f2;
-      border-radius: 999px;
-      background: #edf4ff;
-      color: #365486;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .progress-chip.is-active {
-      background: var(--blue-700);
-      color: #fff;
-    }
-
     .form-step-pane {
       display: none;
     }
@@ -753,8 +1023,8 @@
     }
 
     .control-area {
-      min-height: 120px;
-      padding: 12px 14px;
+      min-height: 128px;
+      padding: 14px 16px;
       resize: vertical;
       line-height: 1.5;
     }
@@ -770,10 +1040,10 @@
       display: none;
       margin: 0 0 14px;
       border: 1px solid #e4c4c4;
-      border-radius: 16px;
-      padding: 10px 12px;
+      border-radius: 18px;
+      padding: 12px 14px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.5;
     }
 
@@ -792,10 +1062,107 @@
       display: block;
     }
 
+    .thankyou-panel {
+      display: grid;
+      gap: 16px;
+      padding-top: 4px;
+      animation: fade-up 0.3s ease;
+    }
+
+    .thankyou-panel[hidden] {
+      display: none;
+    }
+
+    .thankyou-mark {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      margin: 4px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #2d64eb 0%, #1f53d6 100%);
+      box-shadow: 0 22px 40px -28px rgba(31, 83, 214, 0.55);
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .thankyou-copy-block {
+      text-align: center;
+    }
+
+    .thankyou-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      color: #17325f;
+    }
+
+    .thankyou-lead {
+      margin: 10px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
+      color: #5d708d;
+    }
+
+    .thankyou-points {
+      display: grid;
+      gap: 10px;
+    }
+
+    .thankyou-point {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid #dbe6f7;
+      background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #314564;
+    }
+
+    .thankyou-point strong {
+      color: #143b8f;
+    }
+
+    .thankyou-email-note {
+      margin: 0;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid #d8e6fb;
+      background: #eef5ff;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.7;
+      color: #244d9f;
+      text-align: center;
+    }
+
+    .thankyou-note {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #6a7a91;
+      text-align: center;
+    }
+
+    .thankyou-actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    .thankyou-actions .cta-secondary {
+      width: 100%;
+    }
+
     .form-nav {
       display: flex;
-      gap: 12px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 16px;
       align-items: stretch;
     }
 
@@ -809,12 +1176,12 @@
 
     .cta-secondary {
       width: 40%;
-      min-height: 66px;
+      min-height: 68px;
       border: 1px solid #cfdaea;
       border-radius: 20px;
-      background: #fff;
+      background: linear-gradient(180deg, #fff 0%, #f6f9ff 100%);
       color: var(--ink);
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
       box-shadow: var(--shadow-soft);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -827,20 +1194,75 @@
       box-shadow: 0 18px 34px -24px rgba(12, 30, 72, 0.42);
     }
 
+    .form-block {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid #deebff;
+      background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+
+    .form-block:first-child {
+      margin-top: 0;
+    }
+
+    .form-block-title {
+      margin: 0 0 4px;
+      font-size: 15px;
+      font-weight: 900;
+      color: #18315f;
+      letter-spacing: -0.01em;
+    }
+
+    .form-block-sub {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #70839c;
+    }
+
     .consent-box {
       margin: 16px 0 0;
-      border: 1px solid #d9e4f2;
-      border-radius: 18px;
-      background: #f7faff;
-      padding: 14px;
+      border: 1px solid #d8e3f4;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #f7faff 0%, #f1f6ff 100%);
+      padding: 16px;
+    }
+
+    .consent-box.is-invalid {
+      border-color: #b10606;
+      background: #fff2f2;
+    }
+
+    .consent-box-head {
+      margin: 0 0 12px;
+    }
+
+    .consent-box-head strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+      color: #143b8f;
+      line-height: 1.3;
+    }
+
+    .consent-box-head span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #61738f;
     }
 
     .consent-check {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.65;
       font-weight: 700;
       color: #202020;
       cursor: pointer;
@@ -861,11 +1283,12 @@
     }
 
     .step-hint {
-      margin: 10px 0 0;
+      margin: 14px 0 0;
       font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      line-height: 1.5;
+      font-weight: 700;
+      color: #607089;
+      line-height: 1.6;
+      text-align: center;
     }
 
     .form-card .cta {
@@ -875,14 +1298,19 @@
       white-space: normal;
       line-height: 1.15;
       letter-spacing: 0;
+      min-height: 68px;
     }
 
     .form-card .cta:hover {
       box-shadow: 0 16px 34px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255,255,255,0.2);
     }
 
-    .form-card-inner {
-      padding: 18px 22px 0;
+    .form-card .cta:disabled,
+    .cta-secondary:disabled {
+      opacity: 0.68;
+      cursor: wait;
+      transform: none;
+      filter: none;
     }
 
     .field.with-icon {
@@ -909,6 +1337,30 @@
       background-position: left 18px center, right 18px center;
       background-size: 18px 18px, 12px 12px;
       padding-right: 42px;
+    }
+
+    .cta-note {
+      margin: 14px 0 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      color: #6c7c93;
+      line-height: 1.5;
+    }
+
+    .cta-note span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: #f4f8ff;
+      border: 1px solid #dce7f8;
+      white-space: nowrap;
     }
 
     .fv-logo-strip {
@@ -1803,48 +2255,63 @@
     }
 
     /* --- Responsive --- */
-    @media (max-width: 1160px) {
-      .page {
-        padding-top: 98px;
+    @media (max-width: 1280px) {
+      .header-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        min-height: auto;
+        padding: 14px 20px 10px;
+        gap: 10px;
       }
 
-      .header-inner {
-        height: auto;
-        min-height: 98px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        flex-wrap: wrap;
+      .brand {
+        order: 1;
         justify-content: center;
+        gap: 6px;
+        flex-wrap: nowrap;
       }
 
       .nav {
+        order: 3;
+        width: auto;
+        max-width: 100%;
         margin-left: 0;
-      }
-
-      .brand-logo {
-        width: 188px;
-        height: 52px;
-      }
-
-      .brand-mark {
-        width: 112px;
-        height: 50px;
-        font-size: 10px;
-      }
-
-      .brand-tag {
-        min-height: 36px;
-        padding: 0 11px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 0;
         font-size: 13px;
       }
 
-      .nav {
-        width: 100%;
+      .header-cta {
+        order: 2;
+        display: flex;
+        flex: 0 0 auto;
+        width: min(100%, 420px);
+        margin: 0 auto;
+        align-self: center;
         justify-content: center;
+        font-size: 16px;
       }
 
-      .header-cta {
-        font-size: 16px;
+      .brand-logo {
+        width: 176px;
+        height: 48px;
+      }
+
+      .brand-mark {
+        width: 104px;
+        height: 46px;
+        font-size: 9px;
+      }
+
+      .brand-tag {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 12px;
       }
 
       .hero-layout {
@@ -1884,36 +2351,17 @@
     }
 
     @media (max-width: 900px) {
-      .page {
-        padding-top: 188px;
-      }
-
       .section-title {
         text-wrap: balance;
       }
 
       .header-inner {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "brand"
-          "cta"
-          "nav";
-        justify-items: center;
-        min-height: auto;
         padding: 12px 16px;
         gap: 10px;
       }
 
       .brand {
-        grid-area: brand;
-      }
-
-      .brand {
         gap: 4px;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: nowrap;
       }
 
       .brand-logo {
@@ -1934,12 +2382,9 @@
       }
 
       .nav {
-        grid-area: nav;
-        width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
         flex-wrap: nowrap;
         gap: 12px;
-        margin-left: 0;
         padding: 0 4px 2px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -1957,13 +2402,11 @@
       }
 
       .header-cta {
-        grid-area: cta;
         width: min(100%, 320px);
-        max-width: none;
-        justify-content: center;
         height: 44px;
         padding: 0 14px;
         font-size: 14px;
+        margin: 0 auto;
       }
 
       .fv-bridge {
@@ -2121,6 +2564,24 @@
 
       .form-card {
         margin: 0 auto;
+        border-radius: 24px;
+      }
+
+      .form-head {
+        padding: 16px 18px 18px;
+      }
+
+      .form-summary {
+        gap: 8px;
+      }
+
+      .summary-item {
+        min-height: 70px;
+        padding: 10px;
+      }
+
+      .summary-value {
+        font-size: 18px;
       }
 
       .container {
@@ -2173,31 +2634,94 @@
       }
 
       .form-badge {
-        font-size: 15px;
-      }
-
-      .field label {
         font-size: 12px;
       }
 
-      .control {
-        height: 50px;
-        font-size: 16px;
+      .form-step-copy {
+        font-size: 12px;
       }
 
-      .segment-option span {
+      .form-progress {
+        padding: 14px 18px 0;
+        gap: 8px;
+      }
+
+      .progress-chip {
+        min-height: 52px;
+        padding: 10px 12px;
+      }
+
+      .progress-chip strong {
         font-size: 14px;
+      }
+
+      .selection-preview {
+        margin: 12px 18px 0;
+        padding: 14px;
+      }
+
+      .selection-preview-grid {
+        gap: 8px;
+      }
+
+      .selection-item {
+        min-height: 60px;
+        padding: 10px;
+      }
+
+      .thankyou-title {
+        font-size: 24px;
+      }
+
+      .selection-value {
+        font-size: 14px;
+      }
+
+      .form-card-inner {
+        padding: 16px 18px 0;
+      }
+
+      .pane-intro,
+      .form-block,
+      .consent-box {
+        padding: 16px;
+      }
+
+      .pane-title-row {
+        align-items: center;
+      }
+
+      .field-grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .field-span-2 {
+        grid-column: auto;
+      }
+
+      .field label {
+        font-size: 13px;
+      }
+
+      .control {
+        height: 56px;
+        font-size: 15px;
       }
 
       .segment-group {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        height: 56px;
       }
 
       .segment-option span {
-        min-height: 0;
-        height: 100%;
-        font-size: 13px;
+        min-height: 76px;
+      }
+
+      .segment-option span strong {
+        font-size: 14px;
+      }
+
+      .segment-option span small {
+        font-size: 10px;
       }
 
       .control-area {
@@ -2237,8 +2761,9 @@
         gap: 8px;
       }
 
-      .field label {
-        font-size: 14px;
+      .cta-note span {
+        min-height: 30px;
+        padding: 0 10px;
       }
 
       .pain-card {
@@ -2534,10 +3059,6 @@
     }
 
     @media (max-width: 640px) {
-      .page {
-        padding-top: 204px;
-      }
-
       .header-inner {
         padding: 10px 12px 12px;
       }
@@ -2565,8 +3086,11 @@
 
       .nav {
         justify-content: center;
+        flex-wrap: wrap;
         gap: 10px;
         font-size: 12px;
+        overflow: visible;
+        padding: 0;
       }
 
       .header-cta {
@@ -2574,6 +3098,7 @@
         height: 42px;
         padding: 0 12px;
         font-size: 13px;
+        margin: 0 auto;
       }
 
       .hero-left {
@@ -2657,6 +3182,66 @@
 
       .form-title {
         font-size: 24px;
+      }
+
+      .form-head-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-status {
+        justify-content: flex-start;
+      }
+
+      .form-summary,
+      .selection-preview-grid,
+      .form-progress {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-preview-head,
+      .pane-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .selection-preview-note {
+        text-align: left;
+      }
+
+      .segment-group {
+        grid-template-columns: 1fr;
+      }
+
+      .segment-option span {
+        min-height: 68px;
+      }
+
+      .thankyou-mark {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+      }
+
+      .thankyou-title {
+        font-size: 22px;
+      }
+
+      .form-nav {
+        flex-direction: column;
+      }
+
+      .cta-secondary {
+        width: 100%;
+      }
+
+      .cta-note {
+        justify-content: flex-start;
+      }
+
+      .cta-note span {
+        width: 100%;
+        justify-content: center;
       }
 
       .fv-logo-item {
@@ -2834,132 +3419,242 @@
           <img class="hero-figure" src="../assets/illustrations/hero_moving_family.png" alt="" />
           <form id="lead-form" class="form-card" action="#" data-endpoint="https://script.google.com/macros/s/AKfycbzSyeKUhpWpvlrdz4KwRG0pv8MrvT6R8g8iRk659ffQOuy7zJdm_KRzBuqnq64dcmk4/exec" novalidate>
             <div class="form-head">
-              <span class="form-badge" id="form-badge">かんたん１分で無料見積</span>
-              <p class="form-title" id="form-title">無料見積もり（STEP1）</p>
-              <p class="form-step-copy" id="form-step-copy">最短1分で完了・完全無料</p>
+              <div class="form-head-top">
+                <span class="form-badge" id="form-badge">V7 / かんたん無料見積もり</span>
+                <div class="form-status" aria-hidden="true">
+                  <span class="status-pill">STEP式</span>
+                  <span class="status-pill">完全無料</span>
+                  <span class="status-pill">最大10社</span>
+                </div>
+              </div>
+              <p class="form-title" id="form-title">30秒で条件入力、あとで比較。</p>
+              <p class="form-step-copy" id="form-step-copy">まずは現住所と引越し先、人数だけ。対応可能な業者を確認するための最小項目です。</p>
+              <div class="form-summary" aria-hidden="true">
+                <div class="summary-item">
+                  <span class="summary-label">入力時間</span>
+                  <span class="summary-value">約1分</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">受付費用</span>
+                  <span class="summary-value">0円</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">依頼先</span>
+                  <span class="summary-value">最大10社</span>
+                </div>
+              </div>
             </div>
 
             <div class="form-progress" aria-hidden="true">
-              <span class="progress-chip is-active" data-step-chip="1">STEP1 入力</span>
-              <span class="progress-chip" data-step-chip="2">STEP2 詳細</span>
+              <span class="progress-chip is-active" data-step-chip="1">
+                <strong>STEP1</strong>
+                <small>見積条件の入力</small>
+              </span>
+              <span class="progress-chip" data-step-chip="2">
+                <strong>STEP2</strong>
+                <small>連絡先と補足情報</small>
+              </span>
+            </div>
+
+            <div class="selection-preview" aria-live="polite">
+              <div class="selection-preview-head">
+                <p class="selection-preview-title">現在の見積条件</p>
+                <p class="selection-preview-note">この条件で対応可能な業者を確認します</p>
+              </div>
+              <div class="selection-preview-grid">
+                <div class="selection-item">
+                  <span class="selection-label">現住所</span>
+                  <span id="preview-from-zip" class="selection-value">未入力</span>
+                </div>
+                <div class="selection-item">
+                  <span class="selection-label">引越し先</span>
+                  <span id="preview-to-prefecture" class="selection-value">未選択</span>
+                </div>
+                <div class="selection-item">
+                  <span class="selection-label">人数</span>
+                  <span id="preview-people-count" class="selection-value">単身</span>
+                </div>
+              </div>
             </div>
 
             <div class="form-card-inner">
               <p id="form-error" class="form-error" aria-live="polite" hidden></p>
               <p id="form-success" class="form-success" aria-live="polite" hidden></p>
 
+              <div id="thankyou-panel" class="thankyou-panel" hidden>
+                <div class="thankyou-mark" aria-hidden="true">✓</div>
+                <div class="thankyou-copy-block">
+                  <h3 class="thankyou-title">お問い合わせありがとうございました</h3>
+                  <p class="thankyou-lead">無料見積もり依頼を受け付けました。内容を確認のうえ、対応可能な業者または担当よりご連絡いたします。</p>
+                </div>
+                <div class="thankyou-points">
+                  <div class="thankyou-point"><strong>受付状況:</strong> ご入力内容に応じて、対応可能な送信先へ順次お取り次ぎします。</div>
+                  <div class="thankyou-point"><strong>ご連絡について:</strong> 内容確認のため、追加で確認のご連絡を差し上げる場合があります。</div>
+                </div>
+                <p id="thankyou-email-note" class="thankyou-email-note">メールアドレスをご登録いただいた場合は、受付完了メールをお送りします。</p>
+                <p class="thankyou-note">※混雑状況やご入力内容により、ご案内までお時間をいただく場合があります。<br />※メールが届かない場合は、迷惑メールフォルダもあわせてご確認ください。</p>
+                <div class="thankyou-actions">
+                  <button id="thankyou-reset-btn" type="button" class="cta-secondary">入力画面に戻る</button>
+                </div>
+              </div>
+
               <div class="form-step-pane is-active" data-step-pane="1">
-                <div class="field with-icon field-zip">
-                  <label for="from-zip">現住所の郵便番号</label>
-                  <input id="from-zip" class="control" type="tel" inputmode="numeric" placeholder="例）1540024" maxlength="7" required />
-                </div>
-
-                <div class="field with-icon field-pref">
-                  <label for="to-prefecture">引越し先の都道府県</label>
-                  <select id="to-prefecture" class="control" required>
-                    <option value="">都道府県を選択してください</option>
-                    <option value="北海道">北海道</option>
-                    <option value="青森県">青森県</option>
-                    <option value="岩手県">岩手県</option>
-                    <option value="宮城県">宮城県</option>
-                    <option value="秋田県">秋田県</option>
-                    <option value="山形県">山形県</option>
-                    <option value="福島県">福島県</option>
-                    <option value="茨城県">茨城県</option>
-                    <option value="栃木県">栃木県</option>
-                    <option value="群馬県">群馬県</option>
-                    <option value="埼玉県">埼玉県</option>
-                    <option value="千葉県">千葉県</option>
-                    <option value="東京都">東京都</option>
-                    <option value="神奈川県">神奈川県</option>
-                    <option value="新潟県">新潟県</option>
-                    <option value="富山県">富山県</option>
-                    <option value="石川県">石川県</option>
-                    <option value="福井県">福井県</option>
-                    <option value="山梨県">山梨県</option>
-                    <option value="長野県">長野県</option>
-                    <option value="岐阜県">岐阜県</option>
-                    <option value="静岡県">静岡県</option>
-                    <option value="愛知県">愛知県</option>
-                    <option value="三重県">三重県</option>
-                    <option value="滋賀県">滋賀県</option>
-                    <option value="京都府">京都府</option>
-                    <option value="大阪府">大阪府</option>
-                    <option value="兵庫県">兵庫県</option>
-                    <option value="奈良県">奈良県</option>
-                    <option value="和歌山県">和歌山県</option>
-                    <option value="鳥取県">鳥取県</option>
-                    <option value="島根県">島根県</option>
-                    <option value="岡山県">岡山県</option>
-                    <option value="広島県">広島県</option>
-                    <option value="山口県">山口県</option>
-                    <option value="徳島県">徳島県</option>
-                    <option value="香川県">香川県</option>
-                    <option value="愛媛県">愛媛県</option>
-                    <option value="高知県">高知県</option>
-                    <option value="福岡県">福岡県</option>
-                    <option value="佐賀県">佐賀県</option>
-                    <option value="長崎県">長崎県</option>
-                    <option value="熊本県">熊本県</option>
-                    <option value="大分県">大分県</option>
-                    <option value="宮崎県">宮崎県</option>
-                    <option value="鹿児島県">鹿児島県</option>
-                    <option value="沖縄県">沖縄県</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="people-count">引越し人数</label>
-                  <div id="people-count-group" class="segment-group" role="radiogroup" aria-label="人数">
-                    <label class="segment-option">
-                      <input type="radio" name="people-count-option" value="単身" checked />
-                      <span>単身</span>
-                    </label>
-                    <label class="segment-option">
-                      <input type="radio" name="people-count-option" value="2人" />
-                      <span>2人</span>
-                    </label>
-                    <label class="segment-option">
-                      <input type="radio" name="people-count-option" value="3人以上" />
-                      <span>3人以上</span>
-                    </label>
+                <div class="pane-intro">
+                  <div class="pane-title-row">
+                    <div>
+                      <p class="pane-kicker">STEP1 / 見積条件の入力</p>
+                      <h3>引越し条件を先に確定</h3>
+                    </div>
+                    <span class="pane-tag">30秒目安</span>
                   </div>
-                  <input id="people-count" type="hidden" value="単身" />
+                  <p>郵便番号と引越し先、人数だけで次へ進めます。入力内容は見積もり受付に必要な確認用途のみに使用します。</p>
+                </div>
+
+                <div class="field-grid field-grid-2">
+                  <div class="field with-icon field-zip">
+                    <label for="from-zip">現住所の郵便番号</label>
+                    <input id="from-zip" class="control" type="tel" inputmode="numeric" placeholder="例）1540024" maxlength="7" required />
+                    <p class="field-meta">7桁の郵便番号で現在地の条件確認に使用します。</p>
+                  </div>
+
+                  <div class="field with-icon field-pref">
+                    <label for="to-prefecture">引越し先の都道府県</label>
+                    <select id="to-prefecture" class="control" required>
+                      <option value="">都道府県を選択してください</option>
+                      <option value="北海道">北海道</option>
+                      <option value="青森県">青森県</option>
+                      <option value="岩手県">岩手県</option>
+                      <option value="宮城県">宮城県</option>
+                      <option value="秋田県">秋田県</option>
+                      <option value="山形県">山形県</option>
+                      <option value="福島県">福島県</option>
+                      <option value="茨城県">茨城県</option>
+                      <option value="栃木県">栃木県</option>
+                      <option value="群馬県">群馬県</option>
+                      <option value="埼玉県">埼玉県</option>
+                      <option value="千葉県">千葉県</option>
+                      <option value="東京都">東京都</option>
+                      <option value="神奈川県">神奈川県</option>
+                      <option value="新潟県">新潟県</option>
+                      <option value="富山県">富山県</option>
+                      <option value="石川県">石川県</option>
+                      <option value="福井県">福井県</option>
+                      <option value="山梨県">山梨県</option>
+                      <option value="長野県">長野県</option>
+                      <option value="岐阜県">岐阜県</option>
+                      <option value="静岡県">静岡県</option>
+                      <option value="愛知県">愛知県</option>
+                      <option value="三重県">三重県</option>
+                      <option value="滋賀県">滋賀県</option>
+                      <option value="京都府">京都府</option>
+                      <option value="大阪府">大阪府</option>
+                      <option value="兵庫県">兵庫県</option>
+                      <option value="奈良県">奈良県</option>
+                      <option value="和歌山県">和歌山県</option>
+                      <option value="鳥取県">鳥取県</option>
+                      <option value="島根県">島根県</option>
+                      <option value="岡山県">岡山県</option>
+                      <option value="広島県">広島県</option>
+                      <option value="山口県">山口県</option>
+                      <option value="徳島県">徳島県</option>
+                      <option value="香川県">香川県</option>
+                      <option value="愛媛県">愛媛県</option>
+                      <option value="高知県">高知県</option>
+                      <option value="福岡県">福岡県</option>
+                      <option value="佐賀県">佐賀県</option>
+                      <option value="長崎県">長崎県</option>
+                      <option value="熊本県">熊本県</option>
+                      <option value="大分県">大分県</option>
+                      <option value="宮崎県">宮崎県</option>
+                      <option value="鹿児島県">鹿児島県</option>
+                      <option value="沖縄県">沖縄県</option>
+                    </select>
+                    <p class="field-meta">都道府県単位で対応可能な業者を確認します。</p>
+                  </div>
+                </div>
+
+                <div class="form-block">
+                  <p class="form-block-title">人数を選択してください</p>
+                  <p class="form-block-sub">荷物量の目安として使用します。近い項目を選べば問題ありません。</p>
+                  <div class="field">
+                    <div id="people-count-group" class="segment-group" role="radiogroup" aria-label="人数">
+                      <label class="segment-option">
+                        <input type="radio" name="people-count-option" value="単身" checked />
+                        <span><strong>単身</strong><small>1R・1K目安</small></span>
+                      </label>
+                      <label class="segment-option">
+                        <input type="radio" name="people-count-option" value="2人" />
+                        <span><strong>2人</strong><small>カップル・同居</small></span>
+                      </label>
+                      <label class="segment-option">
+                        <input type="radio" name="people-count-option" value="3人以上" />
+                        <span><strong>3人以上</strong><small>家族・荷物多め</small></span>
+                      </label>
+                    </div>
+                    <input id="people-count" type="hidden" value="単身" />
+                  </div>
                 </div>
               </div>
 
               <div class="form-step-pane" data-step-pane="2">
-                <div class="field">
-                  <label for="customer-name">氏名<span class="req">必須</span></label>
-                  <input id="customer-name" class="control" type="text" placeholder="例: 山田 太郎" maxlength="100" required />
+                <div class="pane-intro">
+                  <div class="pane-title-row">
+                    <div>
+                      <p class="pane-kicker">STEP2 / 連絡先と補足情報</p>
+                      <h3>連絡を受け取る情報を入力</h3>
+                    </div>
+                    <span class="pane-tag">必須2項目</span>
+                  </div>
+                  <p>氏名と電話番号を入力すると受付完了です。メールや希望条件は任意なので、必要な範囲だけ追加入力してください。</p>
                 </div>
 
-                <div class="field">
-                  <label for="customer-phone">電話番号<span class="req">必須</span></label>
-                  <input id="customer-phone" class="control" type="tel" inputmode="tel" placeholder="例: 080-1234-5678" maxlength="13" required />
+                <div class="form-block">
+                  <p class="form-block-title">受付に必要な情報</p>
+                  <p class="form-block-sub">担当からご連絡する際に使用します。</p>
+                  <div class="field-grid field-grid-2">
+                    <div class="field">
+                      <label for="customer-name">氏名<span class="req">必須</span></label>
+                      <input id="customer-name" class="control" type="text" placeholder="例: 山田 太郎" maxlength="100" required />
+                    </div>
+
+                    <div class="field">
+                      <label for="customer-phone">電話番号<span class="req">必須</span></label>
+                      <input id="customer-phone" class="control" type="tel" inputmode="tel" placeholder="例: 080-1234-5678" maxlength="13" required />
+                    </div>
+                  </div>
                 </div>
 
-                <div class="field">
-                  <label for="customer-email">メール（任意）</label>
-                  <input id="customer-email" class="control" type="email" inputmode="email" placeholder="例: sample@mail.com" maxlength="100" />
+                <div class="form-block">
+                  <p class="form-block-title">あると案内しやすい補足情報</p>
+                  <p class="form-block-sub">任意入力です。希望がある場合のみご記入ください。</p>
+                  <div class="field-grid field-grid-2">
+                    <div class="field">
+                      <label for="customer-email">メール（任意）</label>
+                      <input id="customer-email" class="control" type="email" inputmode="email" placeholder="例: sample@mail.com" maxlength="100" />
+                    </div>
+
+                    <div class="field">
+                      <label for="move-date-note">引越希望日時（任意）</label>
+                      <input id="move-date-note" class="control" type="text" placeholder="例: 4月中旬ごろ" maxlength="100" />
+                    </div>
+
+                    <div class="field">
+                      <label for="building-type">建物タイプ（任意）</label>
+                      <input id="building-type" class="control" type="text" placeholder="例: マンション 3階" maxlength="100" />
+                    </div>
+
+                    <div class="field field-span-2">
+                      <label for="request-note">その他要望欄（任意）</label>
+                      <textarea id="request-note" class="control control-area" placeholder="例: 午後希望 / 養生希望" maxlength="500"></textarea>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="field">
-                  <label for="move-date-note">引越希望日時（任意）</label>
-                  <input id="move-date-note" class="control" type="text" placeholder="例: 4月中旬ごろ" maxlength="100" />
-                </div>
-
-                <div class="field">
-                  <label for="building-type">建物タイプ（任意）</label>
-                  <input id="building-type" class="control" type="text" placeholder="例: マンション 3階" maxlength="100" />
-                </div>
-
-                <div class="field">
-                  <label for="request-note">その他要望欄（任意）</label>
-                  <textarea id="request-note" class="control control-area" placeholder="例: 午後希望 / 養生希望" maxlength="500"></textarea>
-                </div>
-
-                <div class="consent-box">
+                <div id="consent-box" class="consent-box">
+                  <p class="consent-box-head">
+                    <strong>送信前に利用規約をご確認ください</strong>
+                    <span>同意のうえ送信すると、見積もり受付処理が開始されます。</span>
+                  </p>
                   <label class="consent-check" for="consent-check">
                     <input id="consent-check" type="checkbox" required />
                     <span>
@@ -2976,8 +3671,8 @@
                 <button id="to-step2-btn" type="button" class="cta">
                   <span class="cta-badge">無料</span>
                   <span class="cta-copy">
-                    <strong>見積もりスタート</strong>
-                    <small></small>
+                    <strong>STEP2へ進む</strong>
+                    <small>連絡先と補足情報を入力</small>
                   </span>
                 </button>
               </div>
@@ -2994,7 +3689,7 @@
               </div>
 
               <p class="cta-note" id="form-note-main"><span>○ 厳選した優良業者へ一括依頼</span> <span>✓ 見積もり受付のための情報利用のみ</span></p>
-              <p class="step-hint">※実際の料金は条件により変動します。</p>
+              <p class="step-hint">※実際の料金や対応可否は、引越し条件と空き状況により変動します。</p>
             </div>
           </form>
         </div>
@@ -3259,15 +3954,28 @@
       const badge = document.getElementById("form-badge");
       const title = document.getElementById("form-title");
       const stepCopy = document.getElementById("form-step-copy");
+      const formSummary = form.querySelector(".form-summary");
+      const formProgress = form.querySelector(".form-progress");
+      const selectionPreview = form.querySelector(".selection-preview");
       const noteMain = document.getElementById("form-note-main");
+      const stepHint = form.querySelector(".step-hint");
       const errorBox = document.getElementById("form-error");
       const successBox = document.getElementById("form-success");
+      const thankYouPanel = document.getElementById("thankyou-panel");
+      const thankYouEmailNote = document.getElementById("thankyou-email-note");
+      const thankYouResetBtn = document.getElementById("thankyou-reset-btn");
       const navStep1 = document.getElementById("form-nav-step1");
       const navStep2 = document.getElementById("form-nav-step2");
       const toStep2Btn = document.getElementById("to-step2-btn");
       const backStep1Btn = document.getElementById("back-step1-btn");
       const submitBtn = document.getElementById("submit-btn");
+      const submitBtnPrimary = submitBtn ? submitBtn.querySelector(".cta-copy strong") : null;
+      const submitBtnSecondary = submitBtn ? submitBtn.querySelector(".cta-copy small") : null;
       const peopleCountOptions = Array.from(form.querySelectorAll('input[name="people-count-option"]'));
+      const previewFromZip = document.getElementById("preview-from-zip");
+      const previewToPrefecture = document.getElementById("preview-to-prefecture");
+      const previewPeopleCount = document.getElementById("preview-people-count");
+      const consentBox = document.getElementById("consent-box");
 
       const fields = {
         fromZip: document.getElementById("from-zip"),
@@ -3361,7 +4069,7 @@
       }
 
       function clearInvalid() {
-        const controls = form.querySelectorAll(".control, .segment-group");
+        const controls = form.querySelectorAll(".control, .segment-group, .consent-box");
         controls.forEach((control) => control.classList.remove("is-invalid"));
       }
 
@@ -3370,6 +4078,8 @@
         control.classList.add("is-invalid");
         const focusTarget = control.classList.contains("segment-group")
           ? control.querySelector('input[name="people-count-option"]')
+          : control.classList.contains("consent-box")
+            ? control.querySelector("input")
           : control;
         if (focusTarget && typeof focusTarget.focus === "function") focusTarget.focus();
       }
@@ -3395,10 +4105,53 @@
         return emojiRegex.test(value);
       }
 
+      function showThankYou(payload) {
+        clearMessages();
+        formSummary.hidden = true;
+        formProgress.hidden = true;
+        selectionPreview.hidden = true;
+        stepPane1.hidden = true;
+        stepPane2.hidden = true;
+        navStep1.hidden = true;
+        navStep2.hidden = true;
+        noteMain.hidden = true;
+        stepHint.hidden = true;
+        thankYouPanel.hidden = false;
+
+        badge.textContent = "COMPLETE / 受付完了";
+        title.textContent = "お問い合わせありがとうございました";
+        stepCopy.textContent = "無料見積もり依頼を受け付けました。内容確認後、対応可能な業者または担当よりご連絡いたします。";
+        thankYouEmailNote.textContent = payload.customer.email
+          ? "ご登録のメールアドレス宛に、受付完了メールをお送りします。"
+          : "今回はメールアドレス未入力のため、受付完了メールの送信はありません。";
+      }
+
+      function formatZipPreview(zip) {
+        if (!zip) return "未入力";
+        if (/^[0-9]{7}$/.test(zip)) {
+          return `${zip.slice(0, 3)}-${zip.slice(3)}`;
+        }
+        return zip;
+      }
+
+      function updateSelectionPreview() {
+        previewFromZip.textContent = formatZipPreview(getTrimmed(fields.fromZip));
+        previewToPrefecture.textContent = fields.toPrefecture.value || "未選択";
+        previewPeopleCount.textContent = fields.peopleCount.value || "未選択";
+      }
+
       function showStep(step) {
         currentStep = step;
         clearMessages();
         clearInvalid();
+        thankYouPanel.hidden = true;
+        formSummary.hidden = false;
+        formProgress.hidden = false;
+        selectionPreview.hidden = false;
+        stepPane1.hidden = false;
+        stepPane2.hidden = false;
+        noteMain.hidden = false;
+        stepHint.hidden = false;
 
         const step1Active = step === 1;
         stepPane1.classList.toggle("is-active", step1Active);
@@ -3412,17 +4165,19 @@
         });
 
         if (step1Active) {
-          badge.textContent = "かんたん１分で無料見積";
-          title.textContent = "無料見積もり（STEP1）";
-          stepCopy.textContent = "最短1分で完了・完全無料";
+          badge.textContent = "V7 / かんたん無料見積もり";
+          title.textContent = "30秒で条件入力、あとで比較。";
+          stepCopy.textContent = "まずは現住所と引越し先、人数だけ。対応可能な業者を確認するための最小項目です。";
           noteMain.innerHTML = "<span>○ 厳選した優良業者へ一括依頼</span> <span>✓ 見積もり受付のための情報利用のみ</span>";
+          updateSelectionPreview();
           return;
         }
 
-        badge.textContent = "STEP2 / 連絡先と詳細を入力";
-        title.textContent = "無料見積もり（STEP2）";
-        stepCopy.textContent = "必須2項目（氏名・電話）を入力して送信してください。";
-        noteMain.textContent = "同意のうえ送信すると受付完了となります。";
+        badge.textContent = "STEP2 / 送信前の最終入力";
+        title.textContent = "連絡先入力で受付完了。";
+        stepCopy.textContent = "必須2項目の入力後、同意のうえ送信すると受付完了となります。";
+        noteMain.innerHTML = "<span>○ 同意後に受付完了</span> <span>✓ 入力内容は確認用途に限り利用</span>";
+        updateSelectionPreview();
       }
 
       function getTrimmed(control) {
@@ -3524,7 +4279,7 @@
         }
 
         if (!fields.consentCheck.checked) {
-          showError("同意チェックを選択してください", fields.consentCheck);
+          showError("同意チェックを選択してください", consentBox);
           return false;
         }
 
@@ -3550,7 +4305,7 @@
             terms_url: termsLinks.terms,
             privacy_url: termsLinks.privacy,
           },
-          source: "lp_v4",
+          source: "lp_v7",
         };
       }
 
@@ -3592,7 +4347,14 @@
         toStep2Btn.disabled = isSubmitting;
         backStep1Btn.disabled = isSubmitting;
         submitBtn.disabled = isSubmitting;
-        submitBtn.textContent = isSubmitting ? "送信中..." : "同意して送信する";
+        if (submitBtnPrimary) {
+          submitBtnPrimary.textContent = isSubmitting ? "送信中..." : "同意して送信する";
+        }
+        if (submitBtnSecondary) {
+          submitBtnSecondary.textContent = isSubmitting
+            ? "しばらくそのままお待ちください"
+            : "受付後に対応可能な業者へ転送";
+        }
       }
 
       toStep2Btn.addEventListener("click", () => {
@@ -3604,7 +4366,22 @@
         option.addEventListener("change", () => {
           fields.peopleCount.value = option.value;
           fields.peopleCountGroup.classList.remove("is-invalid");
+          updateSelectionPreview();
         });
+      });
+
+      fields.fromZip.addEventListener("input", () => {
+        fields.fromZip.classList.remove("is-invalid");
+        updateSelectionPreview();
+      });
+
+      fields.toPrefecture.addEventListener("change", () => {
+        fields.toPrefecture.classList.remove("is-invalid");
+        updateSelectionPreview();
+      });
+
+      fields.consentCheck.addEventListener("change", () => {
+        consentBox.classList.remove("is-invalid");
       });
 
       if (logoTicker && logoTrack) {
@@ -3638,6 +4415,10 @@
         showStep(1);
       });
 
+      thankYouResetBtn.addEventListener("click", () => {
+        showStep(1);
+      });
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (!validateStep2()) return;
@@ -3652,11 +4433,16 @@
           window.dataLayer.push({
             event: "form_submit",
             cv_event_name: "form_submit",
-            lead_prefecture: payload.current_address.prefecture,
+            lead_prefecture: payload.destination_prefecture,
           });
           form.reset();
-          showStep(1);
-          showSuccess("送信ありがとうございます。内容を確認し、担当よりご連絡します。");
+          const defaultPeopleOption = peopleCountOptions.find((option) => option.defaultChecked) || peopleCountOptions[0];
+          if (defaultPeopleOption) {
+            defaultPeopleOption.checked = true;
+            fields.peopleCount.value = defaultPeopleOption.value;
+          }
+          updateSelectionPreview();
+          showThankYou(payload);
         } catch (_error) {
           showError("送信に失敗しました。時間をおいて再度お試しください。");
         } finally {
@@ -3664,6 +4450,7 @@
         }
       });
 
+      updateSelectionPreview();
       showStep(1);
     })();
   </script>
